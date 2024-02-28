@@ -1,0 +1,120 @@
+#root {
+  text-align: center;
+  font-family: abel;
+  min-height: 100vh;
+  min-width: 100vw;
+  --theme-dark: rgb(14, 48, 64);
+  --theme-light: rgb(218, 227, 236);
+  --theme-medium: rgb(197, 211, 223);
+  --theme-turqouise: rgb(43, 168, 150);
+  --theme-orange: rgb(236, 156, 91);
+  --theme-orange-transparent: rgb(141, 102, 70);
+  --text-grey-light: rgb(227, 227, 227);
+  --text-grey-dark: rgb(112, 112, 112);
+  --icon-color-grey: rgb(110, 113, 120);
+  background-color: var(--theme-dark);
+}
+
+
+@font-face {
+  font-family: 'leckerli';
+  src: local('leckerli-one'), url('../assets/Leckerli_One/LeckerliOne-Regular.ttf');
+}
+@font-face {
+  font-family: 'abel';
+  src: local('abel'), url('../assets/Abel/Abel-Regular.ttf');
+}
+
+.logo-image {
+  padding: 40% 0 0 0;
+  width: 50%;
+  max-width: 300px;
+  animation: fadeIn 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+.logo-name {
+  font-family: 'leckerli';
+  color: var(--theme-orange);
+  font-size: 40px;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  opacity: 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.button-turqouise {
+  border: none;
+  background-color: var(--theme-turqouise);
+  border-radius: 10px;
+}
+
+.save-button{
+  margin: 20px;
+  width: 90px;
+  height: 45px;
+  font-size: 20px;
+  align-self: center;
+  color: var(--text-grey-light);
+}
+
+#logout-button {
+  height: 30px;
+  width: 30px;
+  color: var(--theme-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#user-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#top-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+#top-menu h4 {
+  font-family: 'leckerli';
+  color: var(--theme-orange-transparent);
+}
+
+#app-background {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  background-color: var(--theme-light);
+  min-height: 90vh;
+  border-radius: 20px 20px 0 0;
+}
+
+#bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--theme-medium);
+  height: 70px;
+}
+
+#bottom-menu button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  color: var(--icon-color-grey);
+  background-color: transparent;
+}

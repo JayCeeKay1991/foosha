@@ -9,6 +9,7 @@ import Root from './routes/root.jsx';
 import ErrorPage from './routes/error-page.jsx';
 import ItemList from './routes/ItemList.jsx';
 import MyList from './routes/MyList.jsx';
+import Messages from './routes/Messages.jsx';
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/items/mine/:userId",
         element: <MyList/>
+      },
+      {
+        path: "/messages",
+        element: <Messages/>
       }
     ]
   },

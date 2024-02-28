@@ -7,12 +7,11 @@ import  Context  from './root';
 
 // show add form after clicking add button
 
-function ItemList () {
+function MyList () {
   const [list, setList] = useState([]);
   const [myList, setMyList] = useState([]);
 
   const { user } = useContext(Context);
-
 
   // load the full list when the route is loaded
   // sort by date for now, maybe by distance later
@@ -48,4 +47,4 @@ function ItemList () {
 }
 
 
-export default ItemList;
+export default MyList;

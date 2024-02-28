@@ -9,27 +9,38 @@ import mainLogo from '../assets/logo-crop.jpg';
 import { login } from "../services/userService";
 import './root.css';
 
+const initialState = {
+  _id: "",
+  email: "",
+  password: "",
+  location: {},
+  image: {},
+  location: {},
+  preferences: [],
+}
 
 // if logged in: app container, else: start screen
 function Root() {
-  const Context = createContext()
+  const [user, setUser] = useState(initialState);
+
 
   const navigate = useNavigate()
-  const [user, setUser] = useState({});
+  const Context = createContext()
 
+  // Login form
   const [formValues, setFormValues] = useState({
     email: "",
     password: ""
   });
 
-  // changes in the form
+  // changes in the login form
   function changeHandler (event) {
     const { name, value } = event.target;
     setFormValues({ ...formValues, [name]: value});
   }
 
-  // submitting the form: login and navigate to all items
-  const handleSubmit = async (e) => {
+  // submitting the login form: login and navigate to all items
+  const handleLogin = async (e) => {
     e.preventDefault();
     async function logInAndSet (formValues) {
       const { email, password } = formValues;
@@ -42,6 +53,14 @@ function Root() {
     logInAndSet(formValues);
   };
 
+  // logout button redirects back to start
+  const handleLogout = async () => {
+    function logoutAndRedirect () {
+      setUser(initialState);
+      navigate('/');
+    }
+    logoutAndRedirect();
+  }
 
 
   return (
@@ -52,7 +71,7 @@ function Root() {
           <div id="top-menu" >
             <button id='user-button' ></button>
             <h4 className='background-logo'>Foosha</h4>
-            <button className='button-turqouise' id='logout-button'>
+            <button className='button-turqouise' id='logout-button' onClick={handleLogout} >
             <FaRightFromBracket size={15}/>
             </button>
           </div>
@@ -81,7 +100,7 @@ function Root() {
           <h1 className='logo-name' >Foosha</h1>
         </div>
 
-        <form id="login-form" onSubmit={handleSubmit} >
+        <form id="login-form" onSubmit={handleLogin} >
           <input name="email" type="text" value={formValues.email} onChange={changeHandler} placeholder="email" required={true} ></input>
           <input name="password" type="text" value={formValues.password} onChange={changeHandler} placeholder="password" required={true} ></input>
           <button className="login-button button-turqouise" type="submit"  >login</button>

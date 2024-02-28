@@ -5,7 +5,7 @@ const controllerItems = require('./controllers/items');
 const controllerMessages = require('./controllers/messages');
 
 router.post('/user', controllerUser.createUser);
-router.get('/user/:id', controllerUser.login);
+router.post('/user/login', controllerUser.login);
 router.put('/user/:id', controllerUser.editUser);
 
 router.post('/items', controllerItems.postItem);

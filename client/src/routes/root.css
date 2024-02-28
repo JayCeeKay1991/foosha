@@ -118,3 +118,33 @@
   color: var(--icon-color-grey);
   background-color: transparent;
 }
+
+#login-form {
+  margin: 20% 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 15px;
+  color: var(--text-grey-light);
+  animation: fadeIn 1s ease-in-out forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+#login-form input{
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  border: none;
+}
+
+.login-button{
+  margin: 20px;
+  width: 90px;
+  height: 45px;
+  font-size: 20px;
+  align-self: center;
+  color: var(--text-grey-light);
+}

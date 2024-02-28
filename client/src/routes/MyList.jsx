@@ -11,7 +11,7 @@ function MyList () {
   const [list, setList] = useState([]);
   const [myList, setMyList] = useState([]);
 
-  const { user } = useContext(Context);
+  //const { user } = useContext(Context);
 
   // load the full list when the route is loaded
   // sort by date for now, maybe by distance later
@@ -33,7 +33,7 @@ function MyList () {
 
   return (
     <>
-      <h2>List</h2>
+      <h2>My List</h2>
       <div id="item-list-container" >
         {
            (!myList.length) ? (<p>Nothing to save right now 🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} ></MyItem>))

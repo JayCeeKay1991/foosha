@@ -15,6 +15,8 @@ function MyItem ({item}) {
     return `${day}/${month}/${year}`
   }
 
+
+
   return (
     <div id="item-container">
       <div id="item-info" >

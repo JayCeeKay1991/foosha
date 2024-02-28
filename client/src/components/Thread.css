@@ -1,0 +1,19 @@
+#thread-container {
+  position: relative;
+  background-color: var(--theme-medium);
+  color: var(--text-grey-dark);
+  height: 180px;
+  margin: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+#thread-info {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  justify-content: flex-start;
+  font-size: 15px;
+  height: 90%;
+  padding: 10px;
+}

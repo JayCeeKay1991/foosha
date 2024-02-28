@@ -24,8 +24,8 @@ function Root() {
   const [user, setUser] = useState(initialState);
 
 
-  const navigate = useNavigate()
-  const Context = createContext()
+  const navigate = useNavigate();
+  const Context = createContext();
 
   // Login form
   const [formValues, setFormValues] = useState({
@@ -87,9 +87,9 @@ function Root() {
             <Link to={`/items`} >
             <FaMapLocationDot size={30} ></FaMapLocationDot>
             </Link>
-            <button>
+            <Link to={`/messages`} >
             <FaPaperPlane size={30} ></FaPaperPlane>
-            </button>
+            </Link>
           </nav>
         </div>
       </Context.Provider>

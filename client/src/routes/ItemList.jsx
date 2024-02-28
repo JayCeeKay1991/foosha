@@ -27,12 +27,6 @@ function ItemList () {
   // each time the list is updated, we create a filtered list
   // fixme? also update when the inividual item is updated - item update must update list
 
-  useEffect(() => {
-    // we only want to show the open items
-    const filteredList = list.filter((elem) => elem.available === true );
-    //setList(filteredList);
-  }, [list])
-
   return (
     <>
       <h2>List</h2>

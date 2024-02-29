@@ -6,14 +6,17 @@ import { FaCircleCheck } from 'react-icons/fa6';
 import { formatDate } from '../services/utils';
 import { deleteItem } from '../services/itemService';
 import { editItem } from '../services/itemService';
+import { useMainContext } from './Context';
 
-function MyItem ({item, setMyList}) {
+function MyItem ({item}) {
+
+  const { setList } = useMainContext();
 
   const handleDelete = async () => {
     try {
       async function deleteAndSet (id) {
       await deleteItem(id);
-      setMyList((list) => list.filter(elem => elem._id !== item._id ));
+      setList((list) => list.filter(elem => elem._id !== item._id ));
     }
     deleteAndSet(item._id);
     } catch (error) {
@@ -26,7 +29,7 @@ function MyItem ({item, setMyList}) {
       const body = item;
       const data = await editItem(item._id, {...body, available: false});
       console.log(data);
-      setMyList((list) => list.map(elem => {
+      setList((list) => list.map(elem => {
         if (elem._id === item._id) {
           return data;
         } else {
@@ -38,8 +41,6 @@ function MyItem ({item, setMyList}) {
       console.log(error);
     }
   }
-
-
 
   return (
     <div id="item-container">

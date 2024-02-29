@@ -4,10 +4,9 @@ import { postItem } from "../services/itemService";
 import { useMainContext } from "./Context";
 
 
-
 function AddForm ({setMyList, setShowAddForm}) {
 
-  const { user } = useMainContext();
+  const { user, setList } = useMainContext();
 
   const initialState = {
     title: "",
@@ -32,7 +31,7 @@ function AddForm ({setMyList, setShowAddForm}) {
     try {
     async function createAndSet (formValues) {
       const newItem = await postItem(formValues);
-      setMyList((prevList) => [...prevList, newItem]);
+      setList((prevList) => [...prevList, newItem]);
       setFormValues(initialState);
       setShowAddForm(false);
     }

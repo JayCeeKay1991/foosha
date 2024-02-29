@@ -2,10 +2,12 @@
   position: relative;
   background-color: var(--theme-medium);
   color: var(--text-grey-dark);
-  height: 180px;
+  min-height: 180px;
   margin: 20px;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
+
 }
 
 #thread-info {
@@ -14,6 +16,16 @@
   text-align: start;
   justify-content: flex-start;
   font-size: 15px;
-  max-height: 90%;
   padding: 10px;
+}
+
+#chat {
+  width: 90%;
+  margin: 0 0 20px 0;
+  border-radius: 10px;
+  background-color: var(--theme-dark);
+  align-self: center;
+  display: flex;
+  align-content: stretch;
+  flex-direction: column;
 }

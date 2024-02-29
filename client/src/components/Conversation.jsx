@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllMessages, getMessageByThread } from "../services/messageService";
 import './Conversation.css'
-import { formatDateTime } from "../services/utils";
 import Message from "./Message";
 
 function Conversation ({item}) {
@@ -23,14 +22,14 @@ function Conversation ({item}) {
         <img id="thread-image" />
         <div id="thread-info">
           <h3>{item.itemName}</h3>
-          <ol>
-            {
-            messages.map(elem => elem.thread === item._id ? <Message key={elem._id} item={elem} ></Message> : null)
-            }
-          </ol>
-          <p>{formatDateTime(item.date)}</p>
-          {/* <p id="saved-stamp">{item.available ? '' : 'saved'}</p> */}
         </div>
+        <div id="chat">
+            {
+              messages.map((elem, i) => elem.thread === item._id ? <Message key={elem._id} item={elem} ></Message> : null)
+            }
+            <p>Let's position the form</p>
+        </div>
+          {/* <p id="saved-stamp">{item.available ? '' : 'saved'}</p> */}
       </div>
   )
 

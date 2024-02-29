@@ -1,18 +1,18 @@
 import { useState } from "react";
 import './ContactForm.css';
-import { postConversation } from "../services/conversationService";
+import { getConversationByItemId, postConversation } from "../services/conversationService";
 import { useMainContext } from "./Context";
+import { postMessage } from "../services/messageService";
 
 
-function ContactForm ({item, setShowContactForm, setConversationList}) {
+function ContactForm ({item, setShowContactForm}) {
 
-  const { user } = useMainContext();
+  const { user, setConversationList } = useMainContext();
 
   const initialState = {
-    itemName: item.title,
-    itemId: item._id,
-    contact: user._id,
-    owner: item.owner
+    message: "",
+    author: user._id,
+    thread: "",
   }
 
   const [formValues, setFormValues] = useState(initialState);
@@ -27,13 +27,38 @@ function ContactForm ({item, setShowContactForm, setConversationList}) {
   async function submitHandler (e) {
     e.preventDefault();
     try {
-    async function createAndSet (formValues) {
-      const newConversation = await postConversation(formValues);
-      setConversationList((prevList) => [...prevList, newConversation]);
+    async function createConversationAndMessage (formValues) {
+
+      // Is there already a conversation for this item?
+      const conversationInDb = await getConversationByItemId(item._id, user._id);
+
+      //console.log('💚', conversationInDb);
+
+      if (conversationInDb) {
+        const newMessage = await postMessage({...formValues, thread: conversationInDb._id});
+        //console.log('🦋', newMessage)
+      } else {
+         // create a new conversation first
+        const newConversation = await postConversation({
+        itemName: item.title,
+        itemId: item._id,
+        contact: user._id,
+        owner: item.owner
+        });
+
+        //console.log('🦊', newConversation);
+        // then post the message and add it to the new convo
+        const newMessage = await postMessage({...formValues, thread: newConversation._id});
+        //console.log('😻', newMessage)
+
+        // add the new convo to list of conversations
+        setConversationList((prevList) => [...prevList, newConversation]);
+      }
+      // in any case:
       setFormValues(initialState);
       setShowContactForm(false);
     }
-    createAndSet(formValues);
+    createConversationAndMessage(formValues);
     } catch (error) {
       console.log(error);
     }
@@ -41,8 +66,11 @@ function ContactForm ({item, setShowContactForm, setConversationList}) {
 
 
   return (
-    <form id="add-form" onSubmit={submitHandler} >
-      <button className="save-button button-turqouise" type="submit">save</button>
+    <form id="contact-form" onSubmit={submitHandler} >
+
+      <input name="message" type="textarea" value={formValues.message} onChange={changeHandler} placeholder="message" required={true} ></input>
+
+      <button className="save-button button-turqouise" type="submit">send</button>
     </form>
   )
 }

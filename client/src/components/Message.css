@@ -1,37 +1,23 @@
-#item-container {
-  position: relative;
-  background-color: var(--theme-medium);
-  color: var(--text-grey-dark);
-  height: 180px;
-  margin: 20px;
-  display: flex;
-  align-items: flex-start;
+.message {
+  margin: 10px;
+  border-radius: 10px;
+  min-width: 40%;
+  max-width: 70%;
+  background-color: var(--theme-light);
 }
 
-#item-image {
-  width: 100px;
-  height: 100px;
+.message-text {
+  margin: 5px;
 }
 
-#item-text, #item-info {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  justify-content: flex-start;
-  font-size: 15px;
-  height: 90%;
-  padding: 10px;
+#message-outbound {
+  border-radius: 10px;
+  align-self: flex-end;
+  text-align: end;
 }
 
-#item-text h3 {
-  font-size: 20px;
-  margin: 5px 0;
-}
-
-#item-description {
-  font-size: 12px;
-}
-
-#message {
-  list-style: none;
+#message-timestamp {
+  font-size: 10px;
+  padding: 5px;
+  color: black;
 }

@@ -1,34 +1,16 @@
 import { useState } from 'react';
 import './Item.css';
-import { postConversation } from '../services/conversationService';
-import { useMainContext } from "./Context";
 import { FaLocationDot } from 'react-icons/fa6';
 import { FaCommentDots } from 'react-icons/fa6';
 import { formatDate } from '../services/utils';
+import ContactForm from './ContactForm';
 
 function Item ({item}) {
 
-  const { user, setConversationList } = useMainContext();
-
-  function clickContact () {
-    async function createConversation () {
-      try {
-        const newConversation = await postConversation({
-        itemName: item.title,
-        itemId: item._id,
-        contact: user._id,
-        owner: item.owner
-      });
-      setConversationList((prevList) => [...prevList, newConversation]);
-    } catch (error) {
-      console.error(error)
-    }
-  }
-  createConversation();
-  }
-
+  const [showContactForm, setShowContactForm] = useState(false);
 
   return (
+    <>
     <div id="item-container">
       <div id="item-info" >
         <img id="item-image" src={item.image} ></img>
@@ -43,12 +25,14 @@ function Item ({item}) {
       <img></img>
       {item.available ? (
           <div id="item-tools" >
-        <button> <FaCommentDots onClick={clickContact} ></FaCommentDots> </button>
+        <button onClick={() => setShowContactForm(!showContactForm)} > <FaCommentDots></FaCommentDots> </button>
       </div>
         ) : (
           <p id="saved-stamp" >saved</p>
         )}
     </div>
+    {showContactForm ? <ContactForm  item={item} setShowContactForm={setShowContactForm} ></ContactForm> : null}
+    </>
   )
 }
 

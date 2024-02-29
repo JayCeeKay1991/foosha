@@ -22,5 +22,6 @@ router.get('/messages/:thread', controllerMessages.messagesByThread);
 
 router.post('/conversations', controllerConversations.postConversation);
 router.get('/conversations', controllerConversations.allConversations);
+router.get('/conversations/:id/:contact', controllerConversations.getConversationByItemId);
 
 module.exports = router;

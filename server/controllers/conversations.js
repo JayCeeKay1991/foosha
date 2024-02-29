@@ -29,5 +29,18 @@ exports.allConversations = async (req, res) => {
   }
 }
 
+// getting converation for a certain item and contact
+exports.getConversationByItemId = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const contact = req.params.contact;
+    const conversation = await ConversationModel.findOne({itemId: id, contact: contact});
+    res.status(200);
+    res.send(conversation);
+  } catch (error) {
+    res.status(500);
+    res.send(error);
+  }
+}
 
 

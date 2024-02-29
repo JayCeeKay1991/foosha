@@ -4,7 +4,7 @@ const mongoose = require('./index');
 const Message = new mongoose.Schema ({
   message: String,
   author: String, // user _id of sender
-  thread: String, // item _id which this message is about
+  thread: String, // conversation _id which this message is about
   read: {type: Boolean, default: false},
   dateTime: { type: Date, default: Date.now() },
 });

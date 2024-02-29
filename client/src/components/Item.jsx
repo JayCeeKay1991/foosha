@@ -5,16 +5,17 @@ import { FaPencil } from 'react-icons/fa6';
 import { FaTrashCan } from 'react-icons/fa6';
 import { FaCircleCheck } from 'react-icons/fa6';
 import { FaCommentDots } from 'react-icons/fa6';
+import { formatDate } from '../services/utils';
 
 function Item ({item}) {
 
-  function formatDate (dateString) {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`
-  }
+  // function formatDate (dateString) {
+  //   const date = new Date(dateString);
+  //   const day = date.getDate();
+  //   const month = date.getMonth() + 1;
+  //   const year = date.getFullYear();
+  //   return `${day}/${month}/${year}`
+  // }
 
   return (
     <div id="item-container">

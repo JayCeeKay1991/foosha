@@ -15,7 +15,6 @@ const initialState = {
   password: "",
   location: {},
   image: {},
-  location: {},
   preferences: [],
 }
 

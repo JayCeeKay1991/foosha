@@ -9,7 +9,7 @@ exports.postItem = async (req, res) => {
     res.send(newItem);
     res.status(201);
   } catch (error) {
-    console.error();
+    console.error(error);
     res.send(error);
     res.status(500);
   }
@@ -23,7 +23,7 @@ exports.allItems = async (req, res) => {
     res.status(200);
     return res.body;
   } catch (error) {
-    console.error();
+    console.error(error);
     res.send(error);
     res.status(500);
   }
@@ -38,7 +38,7 @@ exports.itemById = async (req, res) => {
     res.status(200);
     return res.body;
   } catch (error) {
-    console.error();
+    console.error(error);
     res.send(error);
     res.status(500);
   }
@@ -54,7 +54,7 @@ exports.itemByOwner = async (req, res) => {
     res.status(200);
     return res.body;
   } catch (error) {
-    console.error();
+    console.error(error);
     res.send(error);
     res.status(500);
   }
@@ -81,7 +81,7 @@ exports.editItem = async (req, res) => {
     res.send(updatedItem);
     res.status(201);
   } catch (error) {
-    console.error();
+    console.error(error);
     res.status(500);
     res.send(error);
   }
@@ -93,8 +93,9 @@ exports.deleteItem = async (req, res) => {
     const id = req.params.id;
     await ItemModel.deleteOne({_id: id});
     res.status(200);
+    res.send('Item successfully deleted');
   } catch (error) {
-    console.error();
+    console.error(error);
     res.status(500);
     res.send(error);
   }

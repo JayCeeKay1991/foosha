@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Item from '../components/Item';
 import './ItemList.css';
-import AddForm from '../components/AddForm';
 import { getAllItems } from '../services/itemService'
 
 // show add form after clicking add button
@@ -25,7 +24,7 @@ function ItemList () {
   }, []);
 
   // each time the list is updated, we create a filtered list
-  // fixme? also update when the inividual item is updated - item update must update list
+  // also update when the inividual item is updated - item update must update list
 
   return (
     <>

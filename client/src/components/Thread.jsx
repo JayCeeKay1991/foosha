@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getMessageByThread } from "../services/messageService";
 import './Thread.css'
+import { formatDateTime } from "../services/utils";
 
 function Thread ({item}) {
   const [messages, setMessages] = useState([]);
@@ -23,7 +24,7 @@ function Thread ({item}) {
         <div id="thread-info">
           <h3>title</h3>
           <p>{item.message}</p>
-          <p>{item.dateTime}</p>
+          <p>{formatDateTime(item.dateTime)}</p>
           <p id="saved-stamp">saved</p>
         </div>
       </div>

@@ -8,7 +8,7 @@ import  Context  from './root';
 // show add form after clicking add button
 
 function MyList () {
-  const [list, setList] = useState([]);
+  const [showAddForm, setShowAddForm] = useState(false);
   const [myList, setMyList] = useState([]);
 
   //const { user } = useContext(Context);
@@ -36,11 +36,11 @@ function MyList () {
       <h2>My List</h2>
       <div id="item-list-container" >
         {
-           (!myList.length) ? (<p>Nothing to save right now 🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} ></MyItem>))
+           (!myList.length) ? (<p>No food to save right now 🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} setMyList={setMyList} ></MyItem>))
         }
       </div>
-      <button id='add-button' className='button-turqouise' >add</button>
-      {/* <AddForm></AddForm> */}
+      <button id='add-button' className='button-turqouise' onClick={() => setShowAddForm(!showAddForm)}>{showAddForm ? 'cancel' : 'add'}</button>
+      {showAddForm ? <AddForm setMyList={setMyList} setShowAddForm={setShowAddForm} ></AddForm> : null}
     </>
   )
 

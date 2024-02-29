@@ -1,20 +1,25 @@
-import { useState } from 'react';
 import './MyItem.css';
 import { FaLocationDot } from 'react-icons/fa6';
 import { FaPencil } from 'react-icons/fa6';
 import { FaTrashCan } from 'react-icons/fa6';
 import { FaCircleCheck } from 'react-icons/fa6';
+import { formatDate } from '../services/utils';
+import { deleteItem } from '../services/itemService';
 
-function MyItem ({item}) {
+function MyItem ({item, setMyList}) {
 
-  function formatDate (dateString) {
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`
+
+  const handleDelete = async () => {
+    try {
+      async function deleteAndSet (id) {
+      await deleteItem(id);
+      setMyList((list) => list.filter(elem => elem._id !== item._id ));
+    }
+    deleteAndSet(item._id);
+    } catch (error) {
+      console.log(error);
+    }
   }
-
 
 
   return (
@@ -33,7 +38,7 @@ function MyItem ({item}) {
       <div id="item-tools" >
         <button> <FaPencil></FaPencil> </button>
         <button> <FaCircleCheck></FaCircleCheck> </button>
-        <button> <FaTrashCan></FaTrashCan> </button>
+        <button onClick={handleDelete} > <FaTrashCan></FaTrashCan> </button>
       </div>
       <p id="saved-stamp" >{item.available ? '' : saved} </p>
     </div>

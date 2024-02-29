@@ -3,6 +3,7 @@ const router = express.Router()
 const controllerUser = require('./controllers/users');
 const controllerItems = require('./controllers/items');
 const controllerMessages = require('./controllers/messages');
+const controllerConversations = require ('./controllers/conversations');
 
 router.post('/user', controllerUser.createUser);
 router.post('/user/login', controllerUser.login);
@@ -18,5 +19,7 @@ router.delete('/items/:id', controllerItems.deleteItem);
 router.post('/messages', controllerMessages.postMessage);
 router.get('/messages', controllerMessages.allMessages);
 router.get('/messages/:thread', controllerMessages.messagesByThread);
+
+router.get('/conversations', controllerConversations.allConversations);
 
 module.exports = router;

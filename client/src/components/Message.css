@@ -1,0 +1,37 @@
+#item-container {
+  position: relative;
+  background-color: var(--theme-medium);
+  color: var(--text-grey-dark);
+  height: 180px;
+  margin: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+#item-image {
+  width: 100px;
+  height: 100px;
+}
+
+#item-text, #item-info {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  justify-content: flex-start;
+  font-size: 15px;
+  height: 90%;
+  padding: 10px;
+}
+
+#item-text h3 {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+#item-description {
+  font-size: 12px;
+}
+
+#message {
+  list-style: none;
+}

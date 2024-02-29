@@ -1,9 +1,9 @@
+
 #item-container {
   position: relative;
   background-color: var(--theme-medium);
   color: var(--text-grey-dark);
   height: 180px;
-  margin: 20px;
   display: flex;
   align-items: flex-start;
 }

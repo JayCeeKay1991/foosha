@@ -80,13 +80,13 @@ function Root() {
           </div>
           <nav id="bottom-menu" >
             <Link to={`/items/mine/{user._id}`} >
-              <FaParachuteBox user={user} size={30} ></FaParachuteBox>
+              <FaParachuteBox size={30} style={{ color: 'var(--icon-color-grey)' }} ></FaParachuteBox>
             </Link>
             <Link to={`/items`} >
-            <FaMapLocationDot size={30} ></FaMapLocationDot>
+            <FaMapLocationDot size={30} style={{ color: 'var(--icon-color-grey)' }} ></FaMapLocationDot>
             </Link>
             <Link to={`/messages`} >
-            <FaPaperPlane size={30} ></FaPaperPlane>
+            <FaPaperPlane size={30} style={{ color: 'var(--icon-color-grey)' }}></FaPaperPlane>
             </Link>
           </nav>
         </div>
@@ -99,7 +99,9 @@ function Root() {
 
         <form id="login-form" onSubmit={handleLogin} >
           <input name="email" type="text" value={formValues.email} onChange={changeHandler} placeholder="email" required={true} ></input>
+
           <input name="password" type="text" value={formValues.password} onChange={changeHandler} placeholder="password" required={true} ></input>
+
           <button className="login-button button-turqouise" type="submit"  >login</button>
         </form>
       </>

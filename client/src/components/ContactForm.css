@@ -1,11 +1,12 @@
 #contact-form {
-  margin: 20px;
-  padding: 10px;
+  margin: 0 20px;
+  padding: 15px;
+  height: 100px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: -20px;
   color: var(--text-grey-dark);
   background-color: var(--theme-medium);
 }
@@ -18,11 +19,6 @@
   border: none;
 }
 
-#contact-form h3 {
-  font-size: 20px;
-}
-
-#upload-button {
-  border: none;
-  background-color: var(--theme-medium);
+#contact-form button {
+  margin: 0 0 0 10px;
 }

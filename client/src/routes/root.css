@@ -119,6 +119,14 @@
   background-color: transparent;
 }
 
+#bottom-menu button:focus {
+  color: var(--icon-color-grey);
+}
+
+#bottom-menu button:active {
+  color: var(--icon-color-grey);
+}
+
 #login-form {
   margin: 20% 20%;
   display: flex;

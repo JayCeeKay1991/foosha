@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllMessages, getMessageByThread } from "../services/messageService";
+import { FaCommentDots } from 'react-icons/fa6';
 import './Conversation.css'
 import Message from "./Message";
 
@@ -24,7 +25,7 @@ function Conversation ({item}) {
           <h3>{item.itemName}</h3>
           {/* <img id="thread-image" /> */}
         </div>
-          <button id="chat-toggle-button" onClick={() => setShowChat(!showChat)} >show chat 📚</button>
+          <button id="chat-toggle-button" onClick={() => setShowChat(!showChat)} >show chat <FaCommentDots></FaCommentDots> </button>
         {
           showChat ? (
             <div id="chat">

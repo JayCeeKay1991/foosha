@@ -2,30 +2,35 @@
   position: relative;
   background-color: var(--theme-medium);
   color: var(--text-grey-dark);
-  min-height: 180px;
+  min-height: 100px;
   margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
+  padding: 10px 0;
 }
 
 #thread-info {
   display: flex;
-  flex-direction: column;
-  text-align: start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: space-between;
   font-size: 15px;
   padding: 10px;
 }
 
 #chat {
   width: 90%;
-  margin: 0 0 20px 0;
+  margin: 20px;
   border-radius: 10px;
   background-color: var(--theme-dark);
-  align-self: center;
   display: flex;
   align-content: stretch;
   flex-direction: column;
+}
+
+#chat-toggle-button {
+  height: 25px;
+  background-color: var(--theme-light);
+  color: var(--icon-color-grey);
+  border: none;
+  border-radius: 5px;
+
+
 }

@@ -1,8 +1,9 @@
 .message {
   margin: 10px;
   border-radius: 10px;
+  width: fit-content;
   min-width: 40%;
-  max-width: 70%;
+  max-width: 65%;
   background-color: var(--theme-light);
 }
 
@@ -11,9 +12,12 @@
 }
 
 #message-outbound {
-  border-radius: 10px;
   align-self: flex-end;
   text-align: end;
+}
+
+#message-inbound {
+  text-align: start;
 }
 
 #message-timestamp {

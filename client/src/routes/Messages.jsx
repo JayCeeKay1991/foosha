@@ -4,16 +4,14 @@ import { useMainContext } from '../components/Context';
 
 
 function Messages () {
-  const [messages, setMessages] = useState([]);
-  const {user, conversationList, setConversationList} = useMainContext();
-
+  const {user, conversationList } = useMainContext();
 
   return (
     <>
       <h2>Messages</h2>
       <div id="messages-thread-container" >
         {
-           (!conversationList.length) ? (<p>Slide into their DMs! 💚</p>) : (conversationList.map(elem => <Conversation key={elem._id} item={elem} ></Conversation>))
+           (!conversationList.length) ? (<p>Slide into their DMs! 💚</p>) : (conversationList.map(elem => elem.author === user._id || elem.contact === user._id ? <Conversation key={elem._id} item={elem} ></Conversation> : null))
         }
       </div>
     </>

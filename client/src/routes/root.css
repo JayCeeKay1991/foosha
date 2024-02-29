@@ -1,7 +1,7 @@
 #root {
   text-align: center;
   font-family: abel;
-  min-height: 100vh;
+  min-height: 110vh;
   min-width: 100vw;
   --theme-dark: rgb(14, 48, 64);
   --theme-light: rgb(218, 227, 236);
@@ -95,7 +95,7 @@
   top: 100px;
   width: 100%;
   background-color: var(--theme-light);
-  min-height: 90vh;
+  min-height: 100vh;
   border-radius: 20px 20px 0 0;
 }
 

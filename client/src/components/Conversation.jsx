@@ -5,6 +5,7 @@ import Message from "./Message";
 
 function Conversation ({item}) {
   const [messages, setMessages] = useState([]);
+  const [showChat, setShowChat] = useState(false);
 
   // load the full list when the route is loaded
   // sort by date for now, maybe by distance later
@@ -19,20 +20,24 @@ function Conversation ({item}) {
 
   return (
       <div id="thread" >
-        <img id="thread-image" />
         <div id="thread-info">
           <h3>{item.itemName}</h3>
+          {/* <img id="thread-image" /> */}
         </div>
-        <div id="chat">
+          <button id="chat-toggle-button" onClick={() => setShowChat(!showChat)} >show chat 📚</button>
+        {
+          showChat ? (
+            <div id="chat">
             {
               messages.map((elem, i) => elem.thread === item._id ? <Message key={elem._id} item={elem} ></Message> : null)
             }
-            <p>Let's position the form</p>
+            <p>This will be a form very soon 💚</p>
         </div>
+          ) : null
+        }
           {/* <p id="saved-stamp">{item.available ? '' : 'saved'}</p> */}
       </div>
   )
-
 
 }
 

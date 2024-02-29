@@ -17,7 +17,8 @@ function MyList () {
       setMyList(filteredList);
     }
     filterAndSet();
-  }, []);
+  }, [list]);
+
 
   return (
     <>

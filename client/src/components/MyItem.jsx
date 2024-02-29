@@ -27,12 +27,9 @@ function MyItem ({item, setMyList}) {
       const data = await editItem(item._id, {...body, available: false});
       console.log(data);
       setMyList((list) => list.map(elem => {
-        // is this the element we clicked on?
         if (elem._id === item._id) {
-          // if so, return new data
           return data;
         } else {
-          // else return the old data
           return elem;
         }
       }
@@ -57,12 +54,15 @@ function MyItem ({item, setMyList}) {
         <p id="item-description" >{item.description}</p>
       </div>
       <img></img>
-      <div id="item-tools" >
+        {item.available ? (
+          <div id="item-tools" >
         <button> <FaPencil></FaPencil> </button>
         <button onClick={markAsSaved} > <FaCircleCheck></FaCircleCheck> </button>
         <button onClick={handleDelete} > <FaTrashCan></FaTrashCan> </button>
       </div>
-      <p id="saved-stamp" >{item.available ? '' : 'saved'} </p>
+        ) : (
+          <p id="saved-stamp" >saved</p>
+        )}
     </div>
   )
 }

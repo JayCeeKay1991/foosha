@@ -1,16 +1,22 @@
 import { useState } from "react";
 import './AddForm.css';
 import { postItem } from "../services/itemService";
+import { useMainContext } from "./Context";
 
-const initialState = {
-  title: "",
-  description: "",
-  location: "",
-  available: true,
-  image: ""
-}
+
 
 function AddForm ({setMyList, setShowAddForm}) {
+
+  const { user } = useMainContext();
+
+  const initialState = {
+    title: "",
+    description: "",
+    owner: user._id,
+    location: "",
+    available: true,
+    image: ""
+  }
 
   const [formValues, setFormValues] = useState(initialState);
 

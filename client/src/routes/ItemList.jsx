@@ -6,6 +6,8 @@ function ItemList () {
 
   const { list } = useMainContext();
 
+
+
   return (
     <>
       <h2>List</h2>

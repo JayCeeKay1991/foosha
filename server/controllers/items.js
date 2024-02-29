@@ -45,7 +45,7 @@ exports.itemById = async (req, res) => {
 }
 
 
-// getting item by user
+//getting item by user
 exports.itemByOwner = async (req, res) => {
   try {
     const ownerId = req.params.id;

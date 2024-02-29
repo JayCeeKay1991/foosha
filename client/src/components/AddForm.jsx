@@ -4,7 +4,7 @@ import { postItem } from "../services/itemService";
 import { useMainContext } from "./Context";
 
 
-function AddForm ({setMyList, setShowAddForm}) {
+function AddForm ({setShowAddForm}) {
 
   const { user, setList } = useMainContext();
 

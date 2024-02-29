@@ -6,12 +6,12 @@ exports.postMessage = async (req, res) => {
     const message = req.body;
     const newMessage = new MessageModel(message);
     newMessage.save();
-    res.send(newMessage);
     res.status(201);
+    res.send(newMessage);
   } catch (error) {
     console.error();
-    res.send(error);
     res.status(500);
+    res.send(error);
   }
 }
 
@@ -19,13 +19,13 @@ exports.postMessage = async (req, res) => {
 exports.allMessages = async (req, res) => {
   try {
     const messages = await MessageModel.find();
-    res.send(messages);
     res.status(200);
+    res.send(messages);
     return res.body;
   } catch (error) {
     console.error();
-    res.send(error);
     res.status(500);
+    res.send(error);
   }
 }
 
@@ -39,8 +39,8 @@ exports.messagesByThread = async (req, res) => {
     return res.body;
   } catch (error) {
     console.error();
-    res.send(error);
     res.status(500);
+    res.send(error);
   }
 }
 

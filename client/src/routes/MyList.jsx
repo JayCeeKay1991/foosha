@@ -25,11 +25,11 @@ function MyList () {
       <h2>My List</h2>
       <div id="item-list-container" >
         {
-           (!myList.length) ? (<p>List is empty 🥦🥦🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} setMyList={setMyList} ></MyItem>))
+           (!myList.length) ? (<p>List is empty 🥦🥦🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} ></MyItem>))
         }
       </div>
       <button id='add-button' className='button-turqouise' onClick={() => setShowAddForm(!showAddForm)}>{showAddForm ? 'cancel' : 'add'}</button>
-      {showAddForm ? <AddForm setMyList={setMyList} setShowAddForm={setShowAddForm} ></AddForm> : null}
+      {showAddForm ? <AddForm setShowAddForm={setShowAddForm} ></AddForm> : null}
     </>
   )
 

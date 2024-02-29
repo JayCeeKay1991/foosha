@@ -1,10 +1,31 @@
 import { useState } from 'react';
 import './Item.css';
+import { postConversation } from '../services/conversationService';
+import { useMainContext } from "./Context";
 import { FaLocationDot } from 'react-icons/fa6';
 import { FaCommentDots } from 'react-icons/fa6';
 import { formatDate } from '../services/utils';
 
 function Item ({item}) {
+
+  const { user, setConversationList } = useMainContext();
+
+  function clickContact () {
+    async function createConversation () {
+      try {
+        const newConversation = await postConversation({
+        itemName: item.title,
+        itemId: item._id,
+        contact: user._id,
+        owner: item.owner
+      });
+      setConversationList((prevList) => [...prevList, newConversation]);
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  createConversation();
+  }
 
 
   return (
@@ -22,7 +43,7 @@ function Item ({item}) {
       <img></img>
       {item.available ? (
           <div id="item-tools" >
-        <button> <FaCommentDots></FaCommentDots> </button>
+        <button> <FaCommentDots onClick={clickContact} ></FaCommentDots> </button>
       </div>
         ) : (
           <p id="saved-stamp" >saved</p>

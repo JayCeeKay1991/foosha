@@ -19,7 +19,7 @@ function Conversation ({item}) {
 
 
   return (
-      <div id="thread-container" >
+      <div id="thread" >
         <img id="thread-image" />
         <div id="thread-info">
           <h3>{item.itemName}</h3>
@@ -29,7 +29,7 @@ function Conversation ({item}) {
             }
           </ol>
           <p>{formatDateTime(item.date)}</p>
-          <p id="saved-stamp">{item.available ? '' : 'saved'}</p>
+          {/* <p id="saved-stamp">{item.available ? '' : 'saved'}</p> */}
         </div>
       </div>
   )

@@ -20,6 +20,7 @@ router.post('/messages', controllerMessages.postMessage);
 router.get('/messages', controllerMessages.allMessages);
 router.get('/messages/:thread', controllerMessages.messagesByThread);
 
+router.post('/conversations', controllerConversations.postConversation);
 router.get('/conversations', controllerConversations.allConversations);
 
 module.exports = router;

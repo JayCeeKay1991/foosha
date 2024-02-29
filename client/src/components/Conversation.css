@@ -1,4 +1,4 @@
-#thread-container {
+#thread {
   position: relative;
   background-color: var(--theme-medium);
   color: var(--text-grey-dark);
@@ -14,6 +14,6 @@
   text-align: start;
   justify-content: flex-start;
   font-size: 15px;
-  height: 90%;
+  max-height: 90%;
   padding: 10px;
 }

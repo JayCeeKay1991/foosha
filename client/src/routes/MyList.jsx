@@ -3,7 +3,7 @@ import MyItem from '../components/MyItem';
 import './ItemList.css';
 import AddForm from '../components/AddForm';
 import { getItemByOwner } from '../services/itemService'
-import  Context  from './root';
+import { useMainContext } from '../components/Context';
 
 // show add form after clicking add button
 
@@ -11,7 +11,7 @@ function MyList () {
   const [showAddForm, setShowAddForm] = useState(false);
   const [myList, setMyList] = useState([]);
 
-  //const { user } = useContext(Context);
+  const { user } = useMainContext();
 
   // load the full list when the route is loaded
   // sort by date for now, maybe by distance later

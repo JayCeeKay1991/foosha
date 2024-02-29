@@ -57,6 +57,9 @@ export async function editItem (id, body) {
   try   {
     const response = await fetch(`${rootUrl}/${id}`, {
     method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(body)
   })
   const data = await response.json();

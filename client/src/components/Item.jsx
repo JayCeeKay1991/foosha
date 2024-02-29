@@ -33,7 +33,7 @@ function Item ({item}) {
       <div id="item-tools" >
         <button> <FaCommentDots></FaCommentDots> </button>
       </div>
-      <p id="saved-stamp" >{item.available ? '' : saved} </p>
+      <p id="saved-stamp" >{item.available ? '' : 'saved'} </p>
     </div>
   )
 }

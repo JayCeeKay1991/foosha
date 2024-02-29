@@ -5,9 +5,9 @@ import { FaTrashCan } from 'react-icons/fa6';
 import { FaCircleCheck } from 'react-icons/fa6';
 import { formatDate } from '../services/utils';
 import { deleteItem } from '../services/itemService';
+import { editItem } from '../services/itemService';
 
 function MyItem ({item, setMyList}) {
-
 
   const handleDelete = async () => {
     try {
@@ -20,6 +20,28 @@ function MyItem ({item, setMyList}) {
       console.log(error);
     }
   }
+
+  const markAsSaved = async () => {
+    try {
+      const body = item;
+      const data = await editItem(item._id, {...body, available: false});
+      console.log(data);
+      setMyList((list) => list.map(elem => {
+        // is this the element we clicked on?
+        if (elem._id === item._id) {
+          // if so, return new data
+          return data;
+        } else {
+          // else return the old data
+          return elem;
+        }
+      }
+      ))
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
 
   return (
@@ -37,10 +59,10 @@ function MyItem ({item, setMyList}) {
       <img></img>
       <div id="item-tools" >
         <button> <FaPencil></FaPencil> </button>
-        <button> <FaCircleCheck></FaCircleCheck> </button>
+        <button onClick={markAsSaved} > <FaCircleCheck></FaCircleCheck> </button>
         <button onClick={handleDelete} > <FaTrashCan></FaTrashCan> </button>
       </div>
-      <p id="saved-stamp" >{item.available ? '' : saved} </p>
+      <p id="saved-stamp" >{item.available ? '' : 'saved'} </p>
     </div>
   )
 }

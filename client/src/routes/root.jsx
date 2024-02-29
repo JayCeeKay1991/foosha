@@ -7,7 +7,9 @@ import { FaPaperPlane } from 'react-icons/fa6';
 import { Outlet, Link } from "react-router-dom";
 import mainLogo from '../assets/logo-crop.jpg';
 import { login } from "../services/userService";
+import { useMainContext } from '../components/Context';
 import './root.css';
+
 
 const initialState = {
   _id: "",
@@ -20,11 +22,9 @@ const initialState = {
 
 // if logged in: app container, else: start screen
 function Root() {
-  const [user, setUser] = useState(initialState);
-
+  const { user, setUser } = useMainContext();
 
   const navigate = useNavigate();
-  const Context = createContext();
 
   // Login form
   const [formValues, setFormValues] = useState({
@@ -64,8 +64,7 @@ function Root() {
 
   return (
     <>
-    {user._id ? (
-      <Context.Provider value={user}>
+    {user?._id ? (
         <div id="app-container">
           <div id="top-menu" >
             <button id='user-button' ></button>
@@ -91,7 +90,6 @@ function Root() {
             </Link>
           </nav>
         </div>
-      </Context.Provider>
     ) : (
       <>
         <div>

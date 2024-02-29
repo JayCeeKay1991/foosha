@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import Item from '../components/Item';
 import './ItemList.css';
 import { getAllItems } from '../services/itemService'
+import { useMainContext } from '../components/Context';
 
 // show add form after clicking add button
 
 function ItemList () {
+
   const [list, setList] = useState([]);
 
   // load the full list when the route is loaded

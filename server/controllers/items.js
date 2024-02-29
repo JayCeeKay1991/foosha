@@ -55,8 +55,8 @@ exports.itemByOwner = async (req, res) => {
     return res.body;
   } catch (error) {
     console.error(error);
-    res.send(error);
     res.status(500);
+    res.send(error);
   }
 }
 
@@ -78,8 +78,8 @@ exports.editItem = async (req, res) => {
     }},
       {new: true}
     );
-    res.send(updatedItem);
     res.status(201);
+    res.send(updatedItem);
   } catch (error) {
     console.error(error);
     res.status(500);

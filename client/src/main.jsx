@@ -10,7 +10,8 @@ import ErrorPage from './routes/error-page.jsx';
 import ItemList from './routes/ItemList.jsx';
 import MyList from './routes/MyList.jsx';
 import Messages from './routes/Messages.jsx';
-
+import ContextProvider from './components/Context.jsx';
+import { useMainContext } from './components/Context.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,9 +36,10 @@ const router = createBrowserRouter([
 
 ]);
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ContextProvider >
+      <RouterProvider router={router} />
+    </ContextProvider>
   </React.StrictMode>,
 )

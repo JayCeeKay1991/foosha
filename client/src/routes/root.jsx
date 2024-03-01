@@ -43,6 +43,7 @@ function Root() {
     e.preventDefault();
     async function logInAndSet (formValues) {
       const { email, password } = formValues;
+
       const user = { email, password };
       const loggedInUser = await login(user);
       setFormValues({email: "", password: ""});

@@ -9,8 +9,8 @@
 
 #thread-info {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  text-align: start;
   font-size: 15px;
   padding: 0 10px;
 }
@@ -53,4 +53,15 @@
 
 #chat button {
   margin: 0 0 0 10px;
+}
+
+#your-turn-badge {
+  position: absolute;
+  right: 10px;
+  top: 130px;
+  border: solid 1px var(--icon-color-grey);
+  background-color: var(--theme-light);
+  border-radius: 15px;
+  width: fit-content;
+  padding: 5px;
 }

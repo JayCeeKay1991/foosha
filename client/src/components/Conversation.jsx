@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { postMessage } from "../services/messageService";
 import { FaCommentDots } from 'react-icons/fa6';
 import './Conversation.css'
 import Message from "./Message";
 import { useMainContext } from "./Context";
+import { formatDateTime } from "../services/utils";
 
 function Conversation ({item}) {
   const [showChat, setShowChat] = useState(false);
+  const [messagesByConversation, setMessagesByConversation] = useState([]);
   const { user, messageList, setMessageList } = useMainContext();
 
   const initialState = {
@@ -27,10 +29,8 @@ function Conversation ({item}) {
   async function submitHandler (e) {
     e.preventDefault();
     try {
-      console.log('💚', item)
       async function sendMessage (formValues) {
         const newMessage = await postMessage(formValues);
-        console.log('🦋', newMessage)
         setMessageList((prevList) => [...prevList, newMessage]);
         setFormValues(initialState);
       }
@@ -40,19 +40,37 @@ function Conversation ({item}) {
     }
   };
 
+  useEffect(() => {
+    const filteredMessages = messageList.filter(elem => elem.thread === item._id);
+    setMessagesByConversation(filteredMessages);
+  }, [messageList])
+
   return (
       <div id="thread" >
         <div id="thread-info">
           <h3>{item.itemName}</h3>
-          {/* <img id="thread-image" /> */}
+          {
+            messagesByConversation.map(
+              (elem, i) => i === messagesByConversation.length - 1 ?
+              <div key={elem._id} >
+                <p> {messagesByConversation.length} message{messagesByConversation.length > 1 ? 's' : ''} </p>
+                <p >last message: {formatDateTime(elem.dateTime)}</p>
+                {
+                  elem.author !== user._id ?  <p id="your-turn-badge" >{ 'your turn!'}</p> : ''
+                }
+              </div>
+            : ''
+            )
+          }
         </div>
+          {/* <img id="thread-image" /> */}
           <button id="chat-toggle-button" onClick={() => setShowChat(!showChat)} >{showChat ? 'hide chat ' : 'show chat '}<FaCommentDots></FaCommentDots> </button>
         {
           showChat ? (
             <div id="chat">
               <div id="chat-bubbles" >
             {
-              messageList.map((elem, i) => elem.thread === item._id ? <Message key={elem._id} item={elem} ></Message> : null)
+              messagesByConversation.map(elem => <Message key={elem._id} item={elem} ></Message>)
             }
             </div>
               <form id="chat-form" onSubmit={submitHandler}>

@@ -1,10 +1,25 @@
 import Item from '../components/Item';
 import './ItemList.css';
 import { useMainContext } from '../components/Context';
+import { useEffect } from 'react';
+import { calculateDistance } from '../services/utils';
 
 function ItemList () {
 
-  const { user, list } = useMainContext();
+  const { user, list, setList, location } = useMainContext();
+
+  // once there's a location, we can sort the items by distance between item's location and user
+  useEffect(() => {
+    if (location) {
+      const sortedItemsLocation = list.sort((a, b) => {
+       let distanceA = calculateDistance(a.location.coordinates[0], a.location.coordinates[1], location.lat, location.lng);
+       let distanceB = calculateDistance(b.location.coordinates[0], b.location.coordinates[1], location.lat, location.lng);
+       return distanceA - distanceB;
+     });
+     setList(sortedItemsLocation);
+   }
+  });
+
 
   return (
     <>

@@ -3,7 +3,7 @@ import './AddForm.css';
 import { postItem } from "../services/itemService";
 import { useMainContext } from "./Context";
 import MapForm from "./Map";
-import { formatLocation } from "../services/utils";
+import { formatLocation } from "../services/mapApiService";
 
 
 function AddForm ({setShowAddForm}) {

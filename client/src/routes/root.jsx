@@ -1,14 +1,11 @@
-import { useState, createContext } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { FaRightFromBracket } from 'react-icons/fa6';
-import { FaParachuteBox } from 'react-icons/fa6';
-import { FaMapLocationDot } from 'react-icons/fa6';
-import { FaPaperPlane } from 'react-icons/fa6';
 import { Outlet, Link } from "react-router-dom";
-import mainLogo from '../assets/logo-crop.jpg';
 import { login } from "../services/userService";
 import { useMainContext } from '../components/Context';
 import './root.css';
+import mainLogo from '../assets/logo-crop.jpg';
+import { FaRightFromBracket, FaParachuteBox, FaMapLocationDot, FaPaperPlane } from 'react-icons/fa6';
 
 
 const initialState = {
@@ -20,7 +17,6 @@ const initialState = {
   preferences: [],
 }
 
-// if logged in: app container, else: start screen
 function Root() {
   const { user, setUser } = useMainContext();
 
@@ -63,6 +59,8 @@ function Root() {
   }
 
 
+
+  // if logged in: showing app container, else: start screen
   return (
     <>
     {user?._id ? (

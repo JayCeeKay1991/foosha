@@ -1,18 +1,17 @@
 import './MyItem.css';
 import './Item.css';
-import { FaLocationDot } from 'react-icons/fa6';
-import { FaPencil } from 'react-icons/fa6';
-import { FaTrashCan } from 'react-icons/fa6';
-import { FaCircleCheck } from 'react-icons/fa6';
+import { FaLocationDot, FaPencil, FaTrashCan, FaCircleCheck } from 'react-icons/fa6';
 import { formatDate } from '../services/utils';
 import { deleteItem } from '../services/itemService';
 import { editItem } from '../services/itemService';
 import { useMainContext } from './Context';
 
+
 function MyItem ({item}) {
 
   const { setList } = useMainContext();
 
+  // delete button
   const handleDelete = async () => {
     try {
       async function deleteAndSet (id) {
@@ -25,19 +24,16 @@ function MyItem ({item}) {
     }
   }
 
+  // chech button
   const markAsSaved = async () => {
     try {
       const body = item;
       const data = await editItem(item._id, {...body, available: false});
-      console.log(data);
       setList((list) => list.map(elem => {
-        if (elem._id === item._id) {
-          return data;
-        } else {
-          return elem;
+        if (elem._id === item._id) return data;
+        else return elem;
         }
-      }
-      ))
+      ));
     } catch (error) {
       console.log(error);
     }

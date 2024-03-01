@@ -2,7 +2,7 @@ import { useState } from "react";
 import './AddForm.css';
 import { postItem } from "../services/itemService";
 import { useMainContext } from "./Context";
-import MapForm from "./Map";
+import Map from "./Map";
 import { formatLocation } from "../services/mapApiService";
 
 
@@ -31,6 +31,7 @@ function AddForm ({setShowAddForm}) {
     setFormValues({ ...formValues, [name]: value});
   }
 
+  // choosing a location by clicking on the map
   function handleLocationSelect (location) {
     setFormValues((prev) => ({ ...prev, location }));
   };
@@ -52,7 +53,6 @@ function AddForm ({setShowAddForm}) {
     }
   }
 
-
   return (
     <form id="add-form" onSubmit={submitHandler} >
 
@@ -62,7 +62,7 @@ function AddForm ({setShowAddForm}) {
 
       <input name="description" type="textarea" value={formValues.description} onChange={changeHandler} placeholder="description" required={true} ></input>
 
-      <MapForm onLocationSelect={handleLocationSelect} ></MapForm>
+      <Map mapAsInput={true} onLocationSelect={handleLocationSelect} ></Map>
 
       <input id="upload-button" name="image" type="file" value={formValues.image} onChange={changeHandler} ></input>
 

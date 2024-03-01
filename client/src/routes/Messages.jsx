@@ -6,6 +6,8 @@ import { useMainContext } from '../components/Context';
 function Messages () {
   const {user, conversationList } = useMainContext();
 
+  // fixme ? maybe sort by newest message
+
   return (
     <>
       <h2>Messages</h2>

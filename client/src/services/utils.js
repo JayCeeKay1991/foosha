@@ -43,8 +43,7 @@ export function calculateDistance (lat1, lng1, lat2, lng2) {
     Math.cos(degreesToRadians(lat1)) * Math.cos(degreesToRadians(lat2)) *
     Math.sin(dLng / 2) * Math.sin(dLng / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const distance = R * c; // Distance in kilometers
-  console.log('🦘', distance);
-  return distance;
+  const distance = R * c;
+  return distance; // in kilometers
 }
 

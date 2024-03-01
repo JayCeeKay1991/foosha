@@ -31,11 +31,9 @@ function ContactForm ({item, setShowContactForm}) {
 
       // Is there already a conversation for this item?
       const conversationInDb = await getConversationByItemId(item._id, user._id);
-      console.log('💚', conversationInDb);
 
       if (conversationInDb) {
         const newMessage = await postMessage({...formValues, thread: conversationInDb._id});
-        //console.log('🦋', newMessage)
       } else {
          // create a new conversation first
         const newConversation = await postConversation({
@@ -44,11 +42,8 @@ function ContactForm ({item, setShowContactForm}) {
         contact: user._id,
         owner: item.owner
         });
-
-        //console.log('🦊', newConversation);
         // then post the message and add it to the new convo
         const newMessage = await postMessage({...formValues, thread: newConversation._id});
-        //console.log('😻', newMessage)
 
         // add the new convo to list of conversations
         setConversationList((prevList) => [...prevList, newConversation]);

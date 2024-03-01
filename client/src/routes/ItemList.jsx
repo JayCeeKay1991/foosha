@@ -3,6 +3,7 @@ import './ItemList.css';
 import { useMainContext } from '../components/Context';
 import { useEffect } from 'react';
 import { calculateDistance } from '../services/utils';
+import Map from '../components/Map';
 
 function ItemList () {
 
@@ -24,7 +25,10 @@ function ItemList () {
   return (
     <>
       <h2>List</h2>
+
       <div id="item-list-container" >
+      <Map id="item-map" mapAsInput={false} items={list}></Map>
+        {/* we don't show our own items here */}
         {
           (!list.filter(elem => elem.owner !== user._id).length) ? <p>Nothing on offer 🥦🥦🥦</p> : list.map(elem =>
             elem.owner !== user._id ? <Item key={elem._id} item={elem} ></Item> : null)

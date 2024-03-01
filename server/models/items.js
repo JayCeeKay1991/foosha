@@ -6,7 +6,6 @@ const Item = new mongoose.Schema ({
   description: String,
   owner: String,
   date: { type: Date, default: Date.now() },
-  /*
   location: {
     type: {
       type: String,
@@ -14,18 +13,19 @@ const Item = new mongoose.Schema ({
       required: true
     },
     coordinates: {
-      type: [Number],
+      type: [Number], // [lng, lat]
       required: true
     }
   },
-  */
+  locationName: String,
   available: {type: Boolean, default: true},
   image:
     {
         data: Buffer,
         contentType: String
-    },
-  });
+    }
+});
 
+Item.index({ location: '2dsphere' });
 const ItemModel = mongoose.model('items', Item);
 module.exports = ItemModel;

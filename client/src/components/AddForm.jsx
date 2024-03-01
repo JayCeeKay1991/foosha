@@ -3,6 +3,7 @@ import './AddForm.css';
 import { postItem } from "../services/itemService";
 import { useMainContext } from "./Context";
 import MapForm from "./Map";
+import { formatLocation } from "../services/utils";
 
 
 function AddForm ({setShowAddForm}) {
@@ -17,6 +18,7 @@ function AddForm ({setShowAddForm}) {
       lat: 0,
       lng: 0,
     },
+    locationName: '',
     available: true,
     image: ""
   }
@@ -31,18 +33,15 @@ function AddForm ({setShowAddForm}) {
 
   function handleLocationSelect (location) {
     setFormValues((prev) => ({ ...prev, location }));
-    console.log('🦋', location);
-    console.log('🦊',  formValues);
   };
 
   // submitting the form
   async function submitHandler (e) {
     e.preventDefault();
     try {
-    async function createAndSet (formValues) {
-      console.log('🦊', formValues);
-      const newItem = await postItem(formValues);
-      console.log('💚', newItem);
+      async function createAndSet (formValues) {
+      const locationName = await formatLocation(formValues.location.lat, formValues.location.lng);
+      const newItem = await postItem({...formValues, locationName: locationName});
       setList((prevList) => [...prevList, newItem]);
       setFormValues(initialState);
       setShowAddForm(false);
@@ -62,8 +61,6 @@ function AddForm ({setShowAddForm}) {
       <input name="title" type="text" value={formValues.title} onChange={changeHandler} placeholder="title" required={true} ></input>
 
       <input name="description" type="textarea" value={formValues.description} onChange={changeHandler} placeholder="description" required={true} ></input>
-
-      {/* <input name="location" type="text" value={formValues.location} onChange={changeHandler} placeholder="pick up location" required={true} ></input> */}
 
       <MapForm onLocationSelect={handleLocationSelect} ></MapForm>
 

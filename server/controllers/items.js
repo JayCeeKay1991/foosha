@@ -3,8 +3,23 @@ const ItemModel = require('../models/items');
 // posting new item to database
 exports.postItem = async (req, res) => {
   try {
-    const item = req.body;
-    const newItem = new ItemModel(item);
+    console.log(req.body);
+    console.log(req.body.location);
+    const { title, description, owner, date, available, image, locationName } = req.body;
+    const { lat, lng } = req.body.location;
+    const newItem = new ItemModel({
+      title,
+      description,
+      location: {
+        type: 'Point',
+        coordinates: [lng, lat]
+      },
+      locationName,
+      owner,
+      date,
+      available,
+      image
+    });
     newItem.save();
     res.send(newItem);
     res.status(201);

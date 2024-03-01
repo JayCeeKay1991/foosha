@@ -15,7 +15,7 @@ function Item ({item}) {
         <div id="item-info" >
           <img id="item-image" src={item.image} ></img>
           <p id="item-date" >{formatDate(item.date)}</p>
-          <p id="item-location" > <FaLocationDot></FaLocationDot>location </p>
+          <p id="item-location" > <FaLocationDot></FaLocationDot>{item.locationName} </p>
         </div>
         <div id="item-text" >
           <h3>{item.title}</h3>

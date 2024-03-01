@@ -47,7 +47,7 @@ function MyItem ({item}) {
       <div id="item-info" >
         <img id="item-image" src={item.image} ></img>
         <p id="item-date" >{formatDate(item.date)}</p>
-         <p id="item-location" > <FaLocationDot></FaLocationDot>location </p>
+         <p id="item-location" > <FaLocationDot></FaLocationDot>location</p>
       </div>
 
       <div id="item-text" >

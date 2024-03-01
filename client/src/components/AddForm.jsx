@@ -2,6 +2,7 @@ import { useState } from "react";
 import './AddForm.css';
 import { postItem } from "../services/itemService";
 import { useMainContext } from "./Context";
+import MapForm from "./Map";
 
 
 function AddForm ({setShowAddForm}) {
@@ -12,7 +13,10 @@ function AddForm ({setShowAddForm}) {
     title: "",
     description: "",
     owner: user._id,
-    location: "",
+    location: {
+      lat: 0,
+      lng: 0,
+    },
     available: true,
     image: ""
   }
@@ -25,12 +29,20 @@ function AddForm ({setShowAddForm}) {
     setFormValues({ ...formValues, [name]: value});
   }
 
+  function handleLocationSelect (location) {
+    setFormValues((prev) => ({ ...prev, location }));
+    console.log('🦋', location);
+    console.log('🦊',  formValues);
+  };
+
   // submitting the form
   async function submitHandler (e) {
     e.preventDefault();
     try {
     async function createAndSet (formValues) {
+      console.log('🦊', formValues);
       const newItem = await postItem(formValues);
+      console.log('💚', newItem);
       setList((prevList) => [...prevList, newItem]);
       setFormValues(initialState);
       setShowAddForm(false);
@@ -51,7 +63,9 @@ function AddForm ({setShowAddForm}) {
 
       <input name="description" type="textarea" value={formValues.description} onChange={changeHandler} placeholder="description" required={true} ></input>
 
-      <input name="location" type="text" value={formValues.location} onChange={changeHandler} placeholder="pick up location" required={true} ></input>
+      {/* <input name="location" type="text" value={formValues.location} onChange={changeHandler} placeholder="pick up location" required={true} ></input> */}
+
+      <MapForm onLocationSelect={handleLocationSelect} ></MapForm>
 
       <input id="upload-button" name="image" type="file" value={formValues.image} onChange={changeHandler} ></input>
 

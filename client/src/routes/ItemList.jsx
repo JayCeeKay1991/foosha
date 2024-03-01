@@ -4,14 +4,15 @@ import { useMainContext } from '../components/Context';
 
 function ItemList () {
 
-  const { list } = useMainContext();
+  const { user, list } = useMainContext();
 
   return (
     <>
       <h2>List</h2>
       <div id="item-list-container" >
         {
-          (!list.length) ? (<p>Nothing here right now 🥦</p>) : (list.map(elem => <Item key={elem._id} item={elem} ></Item>))
+          (!list.filter(elem => elem.owner !== user._id).length) ? <p>Nothing on offer 🥦🥦🥦</p> : list.map(elem =>
+            elem.owner !== user._id ? <Item key={elem._id} item={elem} ></Item> : null)
         }
       </div>
     </>

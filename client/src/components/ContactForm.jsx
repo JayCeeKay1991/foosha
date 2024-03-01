@@ -31,8 +31,7 @@ function ContactForm ({item, setShowContactForm}) {
 
       // Is there already a conversation for this item?
       const conversationInDb = await getConversationByItemId(item._id, user._id);
-
-      //console.log('💚', conversationInDb);
+      console.log('💚', conversationInDb);
 
       if (conversationInDb) {
         const newMessage = await postMessage({...formValues, thread: conversationInDb._id});

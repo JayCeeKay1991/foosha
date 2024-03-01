@@ -4,6 +4,10 @@ h2 {
   padding: 0 20px;
 }
 
+#item-list-container {
+  color: var(--text-grey-dark);
+}
+
 #add-button {
   margin: 20px;
   width: 90px;

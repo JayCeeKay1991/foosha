@@ -20,8 +20,8 @@ function AddForm ({setShowAddForm}) {
   const [formValues, setFormValues] = useState(initialState);
 
   // changes in the form
-  function changeHandler (event) {
-    const { name, value } = event.target;
+  function changeHandler (e) {
+    const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value});
   }
 
@@ -37,7 +37,7 @@ function AddForm ({setShowAddForm}) {
     }
     createAndSet(formValues);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

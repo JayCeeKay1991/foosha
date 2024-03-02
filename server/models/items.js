@@ -19,11 +19,7 @@ const Item = new mongoose.Schema ({
   },
   locationName: String,
   available: {type: Boolean, default: true},
-  image:
-    {
-        data: Buffer,
-        contentType: String
-    }
+  image: String
 });
 
 Item.index({ location: '2dsphere' });

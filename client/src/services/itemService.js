@@ -1,6 +1,7 @@
 const rootUrl = 'http://localhost:3000/items';
+const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/dkvrbsh2c/image/upload';
 
-
+// post an item to list
 export async function postItem (body) {
   try {
     const response = await fetch(rootUrl, {
@@ -16,7 +17,20 @@ export async function postItem (body) {
     console.log(error);
 }};
 
+// post the image of an item or user to cloudinary
+export async function postImageToCloudinary (body) {
+  try {
+    const response = await fetch(cloudinaryUrl, {
+    method: 'POST',
+    body: body,
+  })
+  const data = await response.json();
+  return data.secure_url;
+  } catch (error) {
+    console.log(error);
+}};
 
+// get all items from database
 export async function getAllItems () {
   try   {
     const response = await fetch(rootUrl, {
@@ -28,7 +42,7 @@ export async function getAllItems () {
     console.log(error);
 }};
 
-
+// get only one item from db by id
 export async function getItemById (id) {
   try   {
     const response = await fetch(`${rootUrl}/${id}`, {
@@ -40,7 +54,7 @@ export async function getItemById (id) {
     console.log(error);
 }};
 
-
+// get the items of a specific user from database
 export async function getItemByOwner (id) {
   try   {
     const response = await fetch(`${rootUrl}/mine/${id}`, {
@@ -52,7 +66,7 @@ export async function getItemByOwner (id) {
     console.log(error);
 }};
 
-
+// edit an item in db
 export async function editItem (id, body) {
   try   {
     const response = await fetch(`${rootUrl}/${id}`, {
@@ -68,7 +82,7 @@ export async function editItem (id, body) {
     console.log(error);
 }};
 
-
+// delete an item from db
 export async function deleteItem (id) {
   try {
     const response = await fetch(`${rootUrl}/${id}`,{

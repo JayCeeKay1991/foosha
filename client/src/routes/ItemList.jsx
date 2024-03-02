@@ -25,9 +25,12 @@ function ItemList () {
   return (
     <>
       <h2>List</h2>
+      <div id="item-map" >
+        <Map mapAsInput={false} items={list} zoom={10}></Map>
+      </div>
+
 
       <div id="item-list-container" >
-      <Map id="item-map" mapAsInput={false} items={list}></Map>
         {/* we don't show our own items here */}
         {
           (!list.filter(elem => elem.owner !== user._id).length) ? <p>Nothing on offer 🥦🥦🥦</p> : list.map(elem =>

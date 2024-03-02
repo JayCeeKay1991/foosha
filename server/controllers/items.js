@@ -1,11 +1,19 @@
 const ItemModel = require('../models/items');
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  // fixme: store these safely!
+  // CLOUDINARY_CONFIG
+  cloud_name: 'dkvrbsh2c',
+  api_key: '418961749584279',
+  api_secret: 'yPb8oSjTEUfvC0GeqS8DU7-6Pew'
+});
+
 
 // posting new item to database
 exports.postItem = async (req, res) => {
   try {
-    console.log(req.body);
-    console.log(req.body.location);
-    const { title, description, owner, date, available, image, locationName } = req.body;
+    const { title, description, owner, date, available, locationName, image } = req.body;
     const { lat, lng } = req.body.location;
     const newItem = new ItemModel({
       title,
@@ -23,7 +31,9 @@ exports.postItem = async (req, res) => {
     newItem.save();
     res.send(newItem);
     res.status(201);
-  } catch (error) {
+    console.log('😍', newItem, image);
+  }
+  catch (error) {
     console.error(error);
     res.send(error);
     res.status(500);

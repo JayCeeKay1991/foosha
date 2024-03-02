@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './AddForm.css';
-import { postItem } from "../services/itemService";
+import { postImageToCloudinary, postItem } from "../services/itemService";
 import { useMainContext } from "./Context";
 import Map from "./Map";
 import { formatLocation } from "../services/mapApiService";
@@ -18,17 +18,20 @@ function AddForm ({setShowAddForm}) {
       lat: 0,
       lng: 0,
     },
+    image: '',
     locationName: '',
-    available: true,
-    image: ""
+    available: true
   }
 
   const [formValues, setFormValues] = useState(initialState);
+  const [imageFile, setImageFile] = useState(null);
 
   // changes in the form
-  function changeHandler (e) {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value});
+  function changeHandler(e) {
+    const { name, value, type, files } = e.target;
+    if (type === 'file') {
+      setImageFile(files[0]); // Set the image file
+    } else setFormValues({ ...formValues, [name]: value });
   }
 
   // choosing a location by clicking on the map
@@ -36,22 +39,40 @@ function AddForm ({setShowAddForm}) {
     setFormValues((prev) => ({ ...prev, location }));
   };
 
-  // submitting the form
-  async function submitHandler (e) {
-    e.preventDefault();
+
+// Submitting the form
+async function submitHandler(e) {
+  e.preventDefault();
+  let imageUrl = '';
+
+  if (imageFile) {
     try {
-      async function createAndSet (formValues) {
-      const locationName = await formatLocation(formValues.location.lat, formValues.location.lng);
-      const newItem = await postItem({...formValues, locationName: locationName});
-      setList((prevList) => [...prevList, newItem]);
-      setFormValues(initialState);
-      setShowAddForm(false);
-    }
-    createAndSet(formValues);
+      const formData = new FormData();
+      formData.append('file', imageFile);
+      formData.append('upload_preset', 'nwvjjpdw');
+      imageUrl = await postImageToCloudinary(formData);
     } catch (error) {
       console.error(error);
     }
   }
+
+  const locationName = await formatLocation(formValues.location.lat, formValues.location.lng);
+  const newItemData = {
+    ...formValues,
+    image: imageUrl,
+    locationName
+  };
+
+  try {
+    const newItem = await postItem(newItemData);
+    setList(prevList => [...prevList, newItem]);
+    setFormValues(initialState);
+    setShowAddForm(false);
+    setImageFile(null);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
   return (
     <form id="add-form" onSubmit={submitHandler} >
@@ -62,9 +83,9 @@ function AddForm ({setShowAddForm}) {
 
       <input name="description" type="textarea" value={formValues.description} onChange={changeHandler} placeholder="description" required={true} ></input>
 
-      <Map mapAsInput={true} onLocationSelect={handleLocationSelect} ></Map>
+      <Map mapAsInput={true} onLocationSelect={handleLocationSelect} zoom={13}></Map>
 
-      <input id="upload-button" name="image" type="file" value={formValues.image} onChange={changeHandler} ></input>
+      <input id="upload-button" name="image" type="file" onChange={changeHandler} ></input>
 
       <button className="save-button button-turqouise" type="submit">save</button>
     </form>

@@ -46,29 +46,40 @@ function Conversation ({item}) {
   }, [messageList])
 
   return (
+    <>
+    <div id="thread-with-chat" >
+
       <div id="thread" >
+        <img src={item.itemImage} id="thread-image" />
         <div id="thread-info">
           <h3>{item.itemName}</h3>
           {
             messagesByConversation.map(
-              (elem, i) => i === messagesByConversation.length - 1 ?
+              (elem, i) =>
+              i === messagesByConversation.length - 1 ?
               <div key={elem._id} >
                 <p> {messagesByConversation.length} message{messagesByConversation.length > 1 ? 's' : ''} </p>
                 <p >last message: {formatDateTime(elem.dateTime)}</p>
                 {
-                  elem.author !== user._id ?  <p id="your-turn-badge" >{ 'your turn!'}</p> : ''
+                  i === messagesByConversation.length - 1 && elem.author !== user._id ?  <p id="your-turn-badge" >{'your turn!'}</p> : ''
                 }
               </div>
             : ''
             )
           }
         </div>
-          {/* <img id="thread-image" /> */}
+        </div>
+        <div>
           <button id="chat-toggle-button" onClick={() => setShowChat(!showChat)} >{showChat ? 'hide chat ' : 'show chat '}<FaCommentDots></FaCommentDots> </button>
         {
           showChat ? (
-            <div id="chat">
-              <div id="chat-bubbles" >
+            <div id="chat"
+              style={{
+                ...(item.itemImage && { backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${item.itemImage})`}),
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }} >
+              <div id="chat-bubbles">
             {
               messagesByConversation.map(elem => <Message key={elem._id} item={elem} ></Message>)
             }
@@ -83,6 +94,8 @@ function Conversation ({item}) {
         }
           {/* <p id="saved-stamp">{item.available ? '' : 'saved'}</p> */}
       </div>
+        </div>
+        </>
   )
 
 }

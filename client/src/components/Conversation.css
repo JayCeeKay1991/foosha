@@ -1,10 +1,22 @@
-#thread {
-  position: relative;
+#thread-with-chat {
   background-color: var(--theme-medium);
-  color: var(--text-grey-dark);
-  min-height: 100px;
   margin: 20px;
   padding: 10px 0;
+}
+
+#thread {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--text-grey-dark);
+  min-height: 100px;
+}
+
+#thread-image {
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 #thread-info {
@@ -31,11 +43,14 @@
   display: flex;
   flex-direction: column;
   align-content: stretch;
+  z-index: 0
 }
 
 #chat-bubbles {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 100;
 }
 
 #chat-form {
@@ -57,8 +72,8 @@
 
 #your-turn-badge {
   position: absolute;
-  right: 10px;
-  top: 130px;
+  right: 60px;
+  top: 160px;
   border: solid 1px var(--icon-color-grey);
   background-color: var(--theme-light);
   border-radius: 15px;

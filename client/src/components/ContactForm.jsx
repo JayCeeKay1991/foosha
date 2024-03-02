@@ -39,8 +39,9 @@ function ContactForm ({item, setShowContactForm}) {
         const newConversation = await postConversation({
         itemName: item.title,
         itemId: item._id,
+        itemImage: item.image,
         contact: user._id,
-        owner: item.owner
+        owner: item.owner,
         });
         // then post the message and add it to the new convo
         const newMessage = await postMessage({...formValues, thread: newConversation._id});

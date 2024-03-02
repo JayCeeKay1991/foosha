@@ -1,12 +1,9 @@
-import { useState } from "react";
 import Conversation from "../components/Conversation";
 import { useMainContext } from '../components/Context';
 
 
 function Messages () {
   const {user, conversationList } = useMainContext();
-
-  // fixme ? maybe sort by newest message
 
   return (
     <>

@@ -24,7 +24,7 @@ function MyItem ({item}) {
     }
   }
 
-  // chech button
+  // check button
   const markAsSaved = async () => {
     try {
       const body = item;

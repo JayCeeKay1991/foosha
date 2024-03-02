@@ -1,9 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import './index.css';
 import Root from './routes/root.jsx';
 import ErrorPage from './routes/error-page.jsx';
@@ -11,7 +8,8 @@ import ItemList from './routes/ItemList.jsx';
 import MyList from './routes/MyList.jsx';
 import Messages from './routes/Messages.jsx';
 import ContextProvider from './components/Context.jsx';
-import { useMainContext } from './components/Context.jsx';
+import UserProfile from './routes/UserProfile.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -30,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/messages",
         element: <Messages/>
+      },
+      {
+        path: "/user",
+        element: <UserProfile/>
       }
     ]
   },

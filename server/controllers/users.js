@@ -44,14 +44,13 @@ exports.login = async (req, res) => {
 exports.editUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const {name, email, password, location, status, image, preferences} = req.body;
+    const {name, email, password, status, image, preferences} = req.body;
     const updatedUser = await UserModel.findOneAndUpdate(
       {_id: id},
       {$set: {
         name: name,
         email: email,
         password: password,
-        location: location,
         status: status,
         image: image,
         preferences: preferences

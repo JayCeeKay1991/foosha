@@ -1,0 +1,29 @@
+#user-form {
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: var(--text-grey-dark);
+  gap: 15px;
+  background-color: var(--theme-medium);
+}
+
+#user-form input{
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  border: none;
+}
+
+#preferences-list {
+  border: none;
+  text-align: left;
+}
+
+#preferences-list input {
+  width: 15px;
+  height: 15px;
+}

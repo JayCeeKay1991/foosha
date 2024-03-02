@@ -66,7 +66,9 @@ function Root() {
     {user?._id ? (
         <div id="app-container">
           <div id="top-menu" >
-            <button id='user-button' ></button>
+            <Link to={`/user`}>
+              <button id='user-button' ></button>
+            </Link>
             <h4 className='background-logo'>Foosha</h4>
             <button className='button-turqouise' id='logout-button' onClick={handleLogout} >
             <FaRightFromBracket size={15}/>

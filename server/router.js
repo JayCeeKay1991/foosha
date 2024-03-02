@@ -7,22 +7,22 @@ const controllerConversations = require ('./controllers/conversations');
 
 
 router.post('/user', controllerUser.createUser);
-router.post('/user/login', controllerUser.login);
+router.post('/user/login', controllerUser.login); // in use
 router.put('/user/:id', controllerUser.editUser);
 
-router.post('/items', controllerItems.postItem);
-router.get('/items', controllerItems.allItems);
+router.post('/items', controllerItems.postItem); // in use
+router.get('/items', controllerItems.allItems); // in use
 router.get('/items/:id', controllerItems.itemById);
 router.get('/items/mine/:id', controllerItems.itemByOwner);
-router.put('/items/:id', controllerItems.editItem);
-router.delete('/items/:id', controllerItems.deleteItem);
+router.put('/items/:id', controllerItems.editItem); // in use
+router.delete('/items/:id', controllerItems.deleteItem); // in use
 
-router.post('/messages', controllerMessages.postMessage);
-router.get('/messages', controllerMessages.allMessages);
+router.post('/messages', controllerMessages.postMessage); // in use
+router.get('/messages', controllerMessages.allMessages); // in use
 router.get('/messages/:thread', controllerMessages.messagesByThread);
 
-router.post('/conversations', controllerConversations.postConversation);
-router.get('/conversations', controllerConversations.allConversations);
+router.post('/conversations', controllerConversations.postConversation); // in use
+router.get('/conversations', controllerConversations.allConversations); // in use
 router.get('/conversations/:id/:contact', controllerConversations.getConversationByItemId);
 
 module.exports = router;

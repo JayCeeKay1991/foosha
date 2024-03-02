@@ -11,17 +11,17 @@ const User = new mongoose.Schema ({
         data: Buffer,
         contentType: String
     },
-  location: {
-    type: {
-      type: String,
-      enum: ['Point'],
-      //required: true
-    },
-    coordinates: {
-      type: [Number],
-      //required: true
-    }
-  },
+  // location: {
+  //   type: {
+  //     type: String,
+  //     enum: ['Point'],
+  //     //required: true
+  //   },
+  //   coordinates: {
+  //     type: [Number],
+  //     //required: true
+  //   }
+  // },
   preferences: [String]
 
 });

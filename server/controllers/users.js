@@ -33,7 +33,8 @@ exports.login = async (req, res) => {
     const user = await UserModel.findOne({ email: email });
     const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();
-    res.status(200).send(user);
+    res.status(200)
+    res.send(user);
   } catch (error) {
     res.status(401);
     res.send({ error: '401', message: 'Username or password is incorrect' });
@@ -45,6 +46,7 @@ exports.editUser = async (req, res) => {
   try {
     const id = req.params.id;
     const {name, email, password, status, image, preferences} = req.body;
+    console.log('🦋', req.body);
     const updatedUser = await UserModel.findOneAndUpdate(
       {_id: id},
       {$set: {
@@ -57,10 +59,12 @@ exports.editUser = async (req, res) => {
     }},
       {new: true}
     );
-    res.send(updatedUser);
+    console.log('🦊', updatedUser);
+
     res.status(201);
+    res.send(updatedUser);
   } catch (error) {
-    console.error();
+    console.error(error);
     res.status(500);
     res.send(error);
   }

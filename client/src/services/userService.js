@@ -45,9 +45,13 @@ export async function updateUser (id, body) {
   try   {
     const response = await fetch(`${rootUrl}/${id}`, {
     method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(body)
   })
   const data = await response.json();
+  console.log('🚀', data);
   return data;
   } catch (error) {
     console.log(error);

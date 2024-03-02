@@ -29,8 +29,8 @@ function Root() {
   });
 
   // changes in the login form
-  function changeHandler (event) {
-    const { name, value } = event.target;
+  function changeHandler (e) {
+    const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value});
   }
 

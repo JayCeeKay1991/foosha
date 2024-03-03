@@ -3,7 +3,25 @@ import { useMainContext } from '../components/Context';
 
 
 function Messages () {
-  const {user, conversationList } = useMainContext();
+  const {user, conversationList, setConversationList } = useMainContext();
+
+  // hide conversations for saved items?
+  // const [showSavedItems, setShowSavedItems] = useState(false);
+
+  // function toggleList () {
+  //   async function filterAndSet () {
+  //     if (!showSavedItems) {
+  //       const filteredList = list.filter(elem => elem.available === false && elem.owner === user._id)
+  //       setConversationList(filteredList);
+  //       setShowSavedItems(true)
+  //     } else {
+  //       const filteredList = list.filter(elem => elem.available === true && elem.owner === user._id)
+  //       setConversationList(filteredList);
+  //       setShowSavedItems(false)
+  //     }
+  //   }
+  //   filterAndSet();
+  // }
 
   return (
     <>

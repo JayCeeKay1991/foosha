@@ -80,3 +80,9 @@
   width: fit-content;
   padding: 5px;
 }
+
+#thread-with-chat #saved-stamp {
+  position: absolute;
+  top: 130px;
+  right: 40px;
+}

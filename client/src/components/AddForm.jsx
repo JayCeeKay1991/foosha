@@ -11,8 +11,8 @@ function AddForm ({setShowAddForm}) {
   const { user, setList } = useMainContext();
 
   const initialState = {
-    title: "",
-    description: "",
+    title: '',
+    description: '',
     owner: user._id,
     location: {
       lat: 0,

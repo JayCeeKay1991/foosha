@@ -20,3 +20,14 @@ h2 {
   font-size: 20px;
   color: var(--text-grey-light);
 }
+
+#filter-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  height: 25px;
+  background-color: var(--theme-medium);
+  color: var(--icon-color-grey);
+  border: none;
+  border-radius: 5px;
+}

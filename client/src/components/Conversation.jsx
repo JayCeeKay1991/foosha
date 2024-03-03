@@ -11,6 +11,7 @@ function Conversation ({item}) {
   const [messagesByConversation, setMessagesByConversation] = useState([]);
   const { user, messageList, setMessageList } = useMainContext();
 
+
   const initialState = {
     message: "",
     author: user._id,
@@ -60,7 +61,7 @@ function Conversation ({item}) {
                 <p> {messagesByConversation.length} message{messagesByConversation.length > 1 ? 's' : ''} </p>
                 <p >last message: {formatDateTime(elem.dateTime)}</p>
                 {
-                  i === messagesByConversation.length - 1 && elem.author !== user._id ?  <p id="your-turn-badge" >{'your turn!'}</p> : ''
+                  i === messagesByConversation.length - 1 && elem.author !== user._id && item.available ?  <p id="your-turn-badge" >{'your turn!'}</p> : ''
                 }
               </div>
             : ''
@@ -91,7 +92,7 @@ function Conversation ({item}) {
           </div>
           ) : null
         }
-          {/* <p id="saved-stamp">{item.available ? '' : 'saved'}</p> */}
+          <p id="saved-stamp">{item.available ? '' : 'saved'}</p>
       </div>
     </div>
   </>

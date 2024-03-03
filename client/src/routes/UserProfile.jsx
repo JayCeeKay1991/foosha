@@ -19,10 +19,9 @@ function UserProfile () {
     const { name, value, type, checked, files } = e.target;
     if (type === 'checkbox') {
       setFormValues(prevValues => {
-        // Add or remove the preference based on the checkbox state
         const newPreferences = checked
-          ? [...prevValues.preferences, name] // Add preference
-          : prevValues.preferences.filter(preference => preference !== name); // Remove preference
+          ? [...prevValues.preferences, name] // add preference
+          : prevValues.preferences.filter(preference => preference !== name); // remove preference
         return { ...prevValues, preferences: newPreferences };
       });
     } else if (type === 'file') {
@@ -60,6 +59,7 @@ function UserProfile () {
       const updatedUser = await updateUser(user._id, newUserData);
       setFormValues(updatedUser);
       setImageFile(null);
+      setUser(updatedUser);
     } catch (error) {
       console.error(error);
     }
@@ -81,35 +81,37 @@ function UserProfile () {
         <label>email</label>
         <input type='email' name='email' value={formValues.email} required={true} onChange={changeHandler} ></input>
 
-        <label>Preferences</label>
+        <label>profile image</label>
+        <input id="upload-button-profile" name="image" type="file" onChange={changeHandler} ></input>
+
+        <label>food preferences</label>
         <fieldset id='preferences-list' >
           <div>
             <input type="checkbox" id="vegetarian" name="vegetarian" checked={formValues.preferences.includes('vegetarian')} onChange={changeHandler} />
-            <label>Vegetarian</label>
+            <label>vegetarian</label>
           </div>
 
           <div>
             <input type="checkbox" id="vegan" name="vegan" checked={formValues.preferences.includes('vegan')} onChange={changeHandler}/>
-            <label>Vegan</label>
+            <label>vegan</label>
           </div>
 
           <div>
             <input type="checkbox" id="pescetarian" name="pescetarian" checked={formValues.preferences.includes('pescetarian')} onChange={changeHandler}/>
-            <label>Pescetarian</label>
+            <label>pescetarian</label>
           </div>
 
           <div>
             <input type="checkbox" id="gluten-free" name="gluten-free" checked={formValues.preferences.includes('gluten-free')} onChange={changeHandler} />
-            <label>Gluten free</label>
+            <label>gluten free</label>
           </div>
 
           <div>
             <input type="checkbox" id="omnivore" name="omnivore" checked={formValues.preferences.includes('omnivore')} onChange={changeHandler}/>
-            <label>Omnivore</label>
+            <label>omnivore</label>
           </div>
         </fieldset>
 
-        <input id="upload-button-profile" name="image" type="file" onChange={changeHandler} ></input>
 
         {/* <input type='password' name='password' value={formValues.password} required={true} onChange={changeHandler} ></input> */}
         <button className='save-button button-turqouise' type='submit'>save</button>

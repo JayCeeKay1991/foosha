@@ -19,11 +19,11 @@ function Conversation ({item}) {
 
   const [formValues, setFormValues] = useState(initialState);
 
-    // changes in the form
-    function changeHandler (e) {
-      const { name, value } = e.target;
-      setFormValues({ ...formValues, [name]: value});
-    }
+  // changes in the form
+  function changeHandler (e) {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value});
+  }
 
   // send a new message
   async function submitHandler (e) {
@@ -48,7 +48,6 @@ function Conversation ({item}) {
   return (
     <>
     <div id="thread-with-chat" >
-
       <div id="thread" >
         <img src={item.itemImage} id="thread-image" />
         <div id="thread-info">
@@ -94,8 +93,8 @@ function Conversation ({item}) {
         }
           {/* <p id="saved-stamp">{item.available ? '' : 'saved'}</p> */}
       </div>
-        </div>
-        </>
+    </div>
+  </>
   )
 
 }

@@ -17,7 +17,9 @@ export async function postItem (body) {
     console.log(error);
 }};
 
+
 // post the image of an item or user to cloudinary
+// fixme: should not live in itemservice
 export async function postImageToCloudinary (body) {
   try {
     const response = await fetch(cloudinaryUrl, {

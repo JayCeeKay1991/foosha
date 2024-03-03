@@ -78,15 +78,10 @@ async function submitHandler(e) {
     <form id="add-form" onSubmit={submitHandler} >
 
       <h3>Add new item</h3>
-
       <input name="title" type="text" value={formValues.title} onChange={changeHandler} placeholder="title" required={true} ></input>
-
       <input name="description" type="textarea" value={formValues.description} onChange={changeHandler} placeholder="description" required={true} ></input>
-
       <Map mapAsInput={true} onLocationSelect={handleLocationSelect} zoom={13}></Map>
-
       <input id="upload-button" name="image" type="file" onChange={changeHandler} ></input>
-
       <button className="save-button button-turqouise" type="submit">save</button>
     </form>
   )

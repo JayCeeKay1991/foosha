@@ -67,7 +67,11 @@ function Root() {
         <div id="app-container">
           <div id="top-menu" >
             <Link to={`/user`}>
-              <button id='user-button' ></button>
+              <button id='user-button' style={{
+                backgroundImage: `url(${user.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }} src={user.image} ></button>
             </Link>
             <h4 className='background-logo'>Foosha</h4>
             <button className='button-turqouise' id='logout-button' onClick={handleLogout} >
@@ -101,7 +105,7 @@ function Root() {
         <form id="login-form" onSubmit={handleLogin} >
           <input name="email" type="text" value={formValues.email} onChange={changeHandler} placeholder="email" required={true} ></input>
 
-          <input name="password" type="text" value={formValues.password} onChange={changeHandler} placeholder="password" required={true} ></input>
+          <input name="password" type="password" value={formValues.password} onChange={changeHandler} placeholder="password" required={true} ></input>
 
           <button className="login-button button-turqouise" type="submit"  >login</button>
         </form>

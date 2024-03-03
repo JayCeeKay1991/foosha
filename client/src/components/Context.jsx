@@ -36,8 +36,6 @@ export default function ContextProvider({ children }) {
     fetchAndSet();
   }, []);
 
-  console.log('🦊', user)
-
   return (
     <MainContext.Provider value={{ user, setUser, list, setList, conversationList, setConversationList, messageList, setMessageList, location }} >
       { children }

@@ -46,7 +46,6 @@ exports.editUser = async (req, res) => {
   try {
     const id = req.params.id;
     const {name, email, password, status, image, preferences} = req.body;
-    console.log('🦋', req.body);
     const updatedUser = await UserModel.findOneAndUpdate(
       {_id: id},
       {$set: {
@@ -59,8 +58,6 @@ exports.editUser = async (req, res) => {
     }},
       {new: true}
     );
-    console.log('🦊', updatedUser);
-
     res.status(201);
     res.send(updatedUser);
   } catch (error) {

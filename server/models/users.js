@@ -6,22 +6,7 @@ const User = new mongoose.Schema ({
   email: String,
   password: String,
   status: String,
-  image:
-    {
-        data: Buffer,
-        contentType: String
-    },
-  // location: {
-  //   type: {
-  //     type: String,
-  //     enum: ['Point'],
-  //     //required: true
-  //   },
-  //   coordinates: {
-  //     type: [Number],
-  //     //required: true
-  //   }
-  // },
+  image: String,
   preferences: [String]
 
 });

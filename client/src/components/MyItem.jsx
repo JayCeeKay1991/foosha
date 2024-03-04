@@ -20,10 +20,7 @@ function MyItem ({item}) {
   const initialState = {
     title: item.title || '',
     description: item.description || '',
-    location: {
-      lat: 0,
-      lng: 0,
-    },
+    location: item.location,
     locationName: item.locationName || '',
     image: item.image || ''
   }
@@ -83,7 +80,6 @@ function MyItem ({item}) {
       console.error(error);
     }
   }
-
 
    // check button
   const markAsSaved = async () => {

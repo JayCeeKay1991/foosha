@@ -1,8 +1,9 @@
 #root {
   text-align: center;
   font-family: abel;
-  min-height: 110vh;
+  min-height: 100vh;
   min-width: 100vw;
+  height: fit-content;
   --theme-dark: rgb(14, 48, 64);
   --theme-light: rgb(218, 227, 236);
   --theme-medium: rgb(197, 211, 223);
@@ -168,4 +169,7 @@
 
 .toggle-signup-button {
   width: 130px;
+  animation: fadeIn 0.8s ease-in-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
 }

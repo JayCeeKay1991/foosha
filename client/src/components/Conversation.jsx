@@ -13,7 +13,6 @@ function Conversation ({item}) {
   const [messagesByConversation, setMessagesByConversation] = useState([]);
   const { user, messageList, setMessageList } = useMainContext();
 
-
   const initialState = {
     message: "",
     author: user._id,
@@ -78,7 +77,7 @@ function Conversation ({item}) {
                 <p> {messagesByConversation.length} message{messagesByConversation.length > 1 ? 's' : ''} </p>
                 <p >last message: {formatDateTime(elem.dateTime)}</p>
                 {
-                  i === messagesByConversation.length - 1 && elem.author !== user._id && item.available ?  <p id="your-turn-badge" >{'your turn!'}</p> : ''
+                  elem.author !== user._id && item.available ?  <p id="your-turn-badge" >{'your turn!'}</p> : ''
                 }
               </div>
             : ''
@@ -107,8 +106,10 @@ function Conversation ({item}) {
             <div id="chat"
               style={{
                 ...(item.itemImage && { backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${item.itemImage})`}),
-                backgroundSize: 'contain',
+                backgroundSize: 'cover',
                 backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+
               }} >
               <div id="chat-bubbles">
             {
@@ -123,7 +124,6 @@ function Conversation ({item}) {
           </div>
           ) : null
         }
-          <p id="saved-stamp">{item.available ? '' : 'saved'}</p>
       </div>
     </div>
   </>

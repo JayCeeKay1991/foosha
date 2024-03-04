@@ -9,9 +9,9 @@ import { FaRightFromBracket, FaParachuteBox, FaMapLocationDot, FaPaperPlane } fr
 
 
 const initialState = {
-  name: "",
-  email: "",
-  password: ""
+  name: '',
+  email: '',
+  password: ''
 }
 
 function Root() {
@@ -52,6 +52,7 @@ function Root() {
       const newUser = await createUser(user);
       setFormValues(initialState);
       setUser(newUser);
+      setShowSignup(false);
       navigate('/items');
     }
     signupAndSet(formValues);

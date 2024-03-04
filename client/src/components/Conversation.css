@@ -16,7 +16,7 @@
   height: 80px;
   width: 80px;
   margin: 10px;
-  border-radius: 5px;
+  object-fit: cover;
 }
 
 #thread-info {
@@ -37,6 +37,7 @@
   height: 50px;
   width: 50px;
   border-radius: 25px;
+  object-fit: cover;
 }
 
 #contact-name, #owner-name {

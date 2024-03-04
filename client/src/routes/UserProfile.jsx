@@ -59,7 +59,6 @@ function UserProfile () {
     try {
       const updatedUser = await updateUser(user._id, newUserData);
       setFormValues(updatedUser);
-      setImageFile(null);
       setUser(updatedUser);
     } catch (error) {
       console.error(error);
@@ -111,9 +110,6 @@ function UserProfile () {
             <label>omnivore</label>
           </div>
         </fieldset>
-
-
-        {/* <input type='password' name='password' value={formValues.password} required={true} onChange={changeHandler} ></input> */}
         <button className='save-button button-turqouise' type='submit'>save</button>
       </form>
     </div>

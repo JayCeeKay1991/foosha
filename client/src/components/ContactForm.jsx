@@ -7,12 +7,12 @@ import { postMessage } from "../services/messageService";
 
 function ContactForm ({item, setShowContactForm}) {
 
-  const { user, setConversationList } = useMainContext();
+  const { user, setConversationList, setMessageList } = useMainContext();
 
   const initialState = {
-    message: "",
+    message: '',
     author: user._id,
-    thread: "",
+    thread: '',
   }
 
   const [formValues, setFormValues] = useState(initialState);
@@ -34,6 +34,8 @@ function ContactForm ({item, setShowContactForm}) {
 
       if (conversationInDb) {
         const newMessage = await postMessage({...formValues, thread: conversationInDb._id});
+        // update message list
+        setMessageList(prevList => [...prevList, newMessage]);
       } else {
          // create a new conversation first
         const newConversation = await postConversation({
@@ -46,8 +48,9 @@ function ContactForm ({item, setShowContactForm}) {
         // then post the message and add it to the new convo
         const newMessage = await postMessage({...formValues, thread: newConversation._id});
 
-        // add the new convo to list of conversations
-        setConversationList((prevList) => [...prevList, newConversation]);
+        // add the new convo to list of conversations and update message list
+        setConversationList(prevList => [...prevList, newConversation]);
+        setMessageList(prevList => [...prevList, newMessage]);
       }
       // in any case:
       setFormValues(initialState);

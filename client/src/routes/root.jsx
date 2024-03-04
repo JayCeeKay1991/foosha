@@ -59,7 +59,6 @@ function Root() {
   }
 
 
-
   // if logged in: showing app container, else: start screen
   return (
     <>

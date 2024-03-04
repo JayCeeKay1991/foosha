@@ -107,7 +107,7 @@ function Conversation ({item}) {
             <div id="chat"
               style={{
                 ...(item.itemImage && { backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${item.itemImage})`}),
-                backgroundSize: 'cover',
+                backgroundSize: 'contain',
                 backgroundPosition: 'center',
               }} >
               <div id="chat-bubbles">

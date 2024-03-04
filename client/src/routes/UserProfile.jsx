@@ -10,6 +10,7 @@ function UserProfile () {
     name: user.name || '',
     email: user.email || '',
     preferences: user.preferences || [],
+    image: user.image || ''
   })
   const [imageFile, setImageFile] = useState(null);
 
@@ -68,8 +69,7 @@ function UserProfile () {
   return (
     <>
     <div id="user-header" >
-    <img id="user-image-profile" src={user.image} ></img>
-      <p>User status</p>
+    <img id="user-image-profile" src={user.image}></img>
     </div>
     <div>
       <form id="user-form" onSubmit={submitHandler} >

@@ -1,6 +1,6 @@
 import Conversation from "../components/Conversation";
 import { useMainContext } from '../components/Context';
-
+import './Messages.css';
 
 function Messages () {
   const {user, conversationList, setConversationList } = useMainContext();

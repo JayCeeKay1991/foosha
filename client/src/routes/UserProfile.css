@@ -35,4 +35,5 @@
   width: 100px;
   border-radius: 50px;
   margin: 30px;
+  object-fit: cover;
 }

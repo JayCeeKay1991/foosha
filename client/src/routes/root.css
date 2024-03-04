@@ -70,6 +70,7 @@
   height: 35px;
   width: 35px;
   border-radius: 20px;
+  border: 1px solid var(--theme-turqouise);
 }
 
 @keyframes fadeIn {
@@ -88,6 +89,8 @@
 #top-menu h4 {
   font-family: 'leckerli';
   color: var(--theme-orange-transparent);
+  font-size: 20px;
+  margin: 20px 0;
 }
 
 #app-background {

@@ -9,6 +9,7 @@ const controllerConversations = require ('./controllers/conversations');
 router.post('/user', controllerUser.createUser);
 router.post('/user/login', controllerUser.login); // in use
 router.put('/user/:id', controllerUser.editUser); // in use
+router.get('/user/:id', controllerUser.userById); // in use
 
 router.post('/items', controllerItems.postItem); // in use
 router.get('/items', controllerItems.allItems); // in use

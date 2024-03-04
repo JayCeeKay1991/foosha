@@ -1,5 +1,6 @@
 const rootUrl = 'http://localhost:3000/user';
 
+// create new user (signup)
 export async function createUser (body) {
   try {
     const response = await fetch(rootUrl, {
@@ -15,6 +16,8 @@ export async function createUser (body) {
     console.log(error);
 }};
 
+
+// log in existing user
 export async function login (body) {
   try   {
     const response = await fetch(`${rootUrl}/login`, {
@@ -30,6 +33,8 @@ export async function login (body) {
     console.log(error);
 }};
 
+
+// getting one user by id from db
 export async function getUserById (id) {
   try   {
     const response = await fetch(`${rootUrl}/${id}`, {
@@ -41,6 +46,8 @@ export async function getUserById (id) {
     console.log(error);
 }};
 
+
+// updating user in db
 export async function updateUser (id, body) {
   try   {
     const response = await fetch(`${rootUrl}/${id}`, {

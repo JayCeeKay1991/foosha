@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { postMessage } from "../services/messageService";
-import { FaCommentDots } from 'react-icons/fa6';
+import { FaCommentDots, FaUser } from 'react-icons/fa6';
 import './Conversation.css'
 import Message from "./Message";
 import { useMainContext } from "./Context";
 import { formatDateTime } from "../services/utils";
+import { getUserById } from "../services/userService";
+
 
 function Conversation ({item}) {
   const [showChat, setShowChat] = useState(false);
@@ -41,10 +43,23 @@ function Conversation ({item}) {
     }
   };
 
+  // show the messages belonging to each conversation
   useEffect(() => {
     const filteredMessages = messageList.filter(elem => elem.thread === item._id);
     setMessagesByConversation(filteredMessages);
   }, [messageList])
+
+
+  // show the contact info on the conversation
+  useEffect(() => {
+    async function getOwnerAndContact () {
+      const itemOwner = await getUserById(item.owner);
+      const itemContact = await getUserById(item.contact);
+      item.contactImage = itemContact.image || '';
+      item.ownerImage = itemOwner.image || '';
+    };
+    getOwnerAndContact(item._id)
+  })
 
   return (
     <>
@@ -68,6 +83,9 @@ function Conversation ({item}) {
             )
           }
         </div>
+        {
+           item.owner === user._id ? <img id="contact-image" src={item.contactImage}></img> : item.contact === user._id ? <img id="owner-image" src={item.ownerImage}></img> : null
+        }
         </div>
         <div>
           <button id="chat-toggle-button" onClick={() => setShowChat(!showChat)} >{showChat ? 'hide chat ' : 'show chat '}<FaCommentDots></FaCommentDots> </button>

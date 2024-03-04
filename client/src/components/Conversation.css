@@ -27,6 +27,15 @@
   padding: 0 10px;
 }
 
+#contact-image, #owner-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  position: absolute;
+  top: 80px;
+  right: 30px;
+}
+
 #chat-toggle-button {
   height: 25px;
   background-color: var(--theme-light);

@@ -41,6 +41,21 @@ exports.login = async (req, res) => {
   }
 };
 
+// getting user by id
+exports.userById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await UserModel.findById(id);
+    res.send(user);
+    res.status(200);
+    return res.body;
+  } catch (error) {
+    console.error(error);
+    res.send(error);
+    res.status(500);
+  }
+}
+
 // edit user details
 exports.editUser = async (req, res) => {
   try {

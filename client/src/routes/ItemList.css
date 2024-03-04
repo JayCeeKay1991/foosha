@@ -6,6 +6,7 @@ h2 {
 
 #item-list-container {
   color: var(--text-grey-dark);
+  margin: 20px;
 }
 
 #item-map {

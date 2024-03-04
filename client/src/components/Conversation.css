@@ -7,7 +7,8 @@
 #thread {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
+  justify-content: space-evenly;
   color: var(--text-grey-dark);
   min-height: 100px;
 }
@@ -25,12 +26,11 @@
   text-align: start;
   font-size: 15px;
   padding: 0 10px;
+  min-width: 200px;
 }
 
 #contact-info, #owner-info {
-  position: absolute;
-  top: 80px;
-  right: 30px;
+  align-self: start;
 }
 
 #contact-image, #owner-image {

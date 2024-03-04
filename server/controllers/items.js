@@ -1,13 +1,9 @@
 const ItemModel = require('../models/items');
-const cloudinary = require('cloudinary').v2;
+// const cloudinary = require('cloudinary').v2;
 
-cloudinary.config({
-  // fixme: store these safely!
-  // CLOUDINARY_CONFIG
-  cloud_name: 'dkvrbsh2c',
-  api_key: '418961749584279',
-  api_secret: 'yPb8oSjTEUfvC0GeqS8DU7-6Pew'
-});
+
+// const cloudinaryConfig = import.meta.env.VITE_CLOUDINARY_CONFIG;
+// cloudinary.config(cloudinaryConfig);
 
 
 // posting new item to database
@@ -31,7 +27,6 @@ exports.postItem = async (req, res) => {
     newItem.save();
     res.send(newItem);
     res.status(201);
-    console.log('😍', newItem, image);
   }
   catch (error) {
     console.error(error);

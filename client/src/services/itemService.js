@@ -1,5 +1,7 @@
 const rootUrl = 'http://localhost:3000/items';
-const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/dkvrbsh2c/image/upload';
+const cloudinaryCloudname = import.meta.env.VITE_CLOUDINARY_CONFIG.cloud_name;
+const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudinaryCloudname}/image/upload`;
+
 
 // post an item to list
 export async function postItem (body) {
@@ -19,7 +21,6 @@ export async function postItem (body) {
 
 
 // post the image of an item or user to cloudinary
-// fixme: should not live in itemservice
 export async function postImageToCloudinary (body) {
   try {
     const response = await fetch(cloudinaryUrl, {
@@ -56,17 +57,6 @@ export async function getItemById (id) {
     console.log(error);
 }};
 
-// get the items of a specific user from database
-export async function getItemByOwner (id) {
-  try   {
-    const response = await fetch(`${rootUrl}/mine/${id}`, {
-    method: 'GET'
-  })
-  const data = await response.json();
-  return data;
-  } catch (error) {
-    console.log(error);
-}};
 
 // edit an item in db
 export async function editItem (id, body) {

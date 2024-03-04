@@ -59,22 +59,6 @@ exports.itemById = async (req, res) => {
   }
 }
 
-
-//getting item by user
-exports.itemByOwner = async (req, res) => {
-  try {
-    const ownerId = req.params.id;
-    const items = await ItemModel.find({owner: ownerId});
-    res.send(items);
-    res.status(200);
-    return res.body;
-  } catch (error) {
-    console.error(error);
-    res.status(500);
-    res.send(error);
-  }
-}
-
 // edit item
 exports.editItem = async (req, res) => {
   try {

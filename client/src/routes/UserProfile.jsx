@@ -83,7 +83,7 @@ function UserProfile () {
         <label>profile image</label>
         <input id="upload-button-profile" name="image" type="file" onChange={changeHandler} ></input>
 
-        <label>food preferences</label>
+        <label>dietary preferences</label>
         <fieldset id='preferences-list' >
           <div>
             <input type="checkbox" id="vegetarian" name="vegetarian" checked={formValues.preferences.includes('vegetarian')} onChange={changeHandler} />

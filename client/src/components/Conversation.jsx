@@ -57,6 +57,8 @@ function Conversation ({item}) {
       const itemContact = await getUserById(item.contact);
       item.contactImage = itemContact.image || '';
       item.ownerImage = itemOwner.image || '';
+      item.contactName = itemContact.name;
+      item.ownerName = itemOwner.name;
     };
     getOwnerAndContact(item._id)
   })
@@ -84,7 +86,18 @@ function Conversation ({item}) {
           }
         </div>
         {
-           item.owner === user._id ? <img id="contact-image" src={item.contactImage}></img> : item.contact === user._id ? <img id="owner-image" src={item.ownerImage}></img> : null
+           item.owner === user._id ?
+           <div id="contact-info" >
+             <img  id="contact-image" src={item.contactImage}></img>
+             <p id="contact-name"  >{item.contactName}</p>
+           </div>
+
+           : item.contact === user._id ?
+           <div id="owner-info">
+            <img id="owner-image" src={item.ownerImage}></img>
+            <p id="owner-name"  >{item.ownerName}</p>
+           </div>
+           : null
         }
         </div>
         <div>

@@ -27,13 +27,22 @@
   padding: 0 10px;
 }
 
+#contact-info, #owner-info {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+}
+
 #contact-image, #owner-image {
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  position: absolute;
-  top: 80px;
-  right: 30px;
+}
+
+#contact-name, #owner-name {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
 }
 
 #chat-toggle-button {

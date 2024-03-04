@@ -46,12 +46,13 @@
   border: none;
   background-color: var(--theme-turqouise);
   border-radius: 10px;
+  color: var(--text-grey-light);
+  height: 45px;
 }
 
 .save-button{
   margin: 20px;
   width: 90px;
-  height: 45px;
   font-size: 20px;
   align-self: center;
   color: var(--text-grey-light);
@@ -130,20 +131,20 @@
   color: var(--icon-color-grey);
 }
 
-#login-form {
-  margin: 20% 20%;
+#login-form, #signup-form {
+  margin: 20% 20% 15px 20%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 15px;
   color: var(--text-grey-light);
-  animation: fadeIn 1s ease-in-out forwards;
-  animation-delay: 1s;
+  animation: fadeIn 0.8s ease-in-out forwards;
+  animation-delay: 0.5s;
   opacity: 0;
 }
 
-#login-form input{
+#login-form input, #signup-form input{
   width: 100%;
   height: 40px;
   border-radius: 10px;
@@ -151,11 +152,20 @@
   border: none;
 }
 
-.login-button{
+.login-button {
   margin: 20px;
   width: 90px;
-  height: 45px;
   font-size: 20px;
   align-self: center;
   color: var(--text-grey-light);
+}
+
+.signup-button {
+  width: 90px;
+  font-size: 17px;
+  align-self: center;
+}
+
+.toggle-signup-button {
+  width: 130px;
 }

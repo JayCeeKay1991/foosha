@@ -6,14 +6,14 @@ const controllerMessages = require('./controllers/messages');
 const controllerConversations = require ('./controllers/conversations');
 
 
-router.post('/user', controllerUser.createUser);
+router.post('/user', controllerUser.createUser); // in use
 router.post('/user/login', controllerUser.login); // in use
 router.put('/user/:id', controllerUser.editUser); // in use
 router.get('/user/:id', controllerUser.userById); // in use
 
 router.post('/items', controllerItems.postItem); // in use
 router.get('/items', controllerItems.allItems); // in use
-router.get('/items/:id', controllerItems.itemById);
+router.get('/items/:id', controllerItems.itemById); // in use
 router.get('/items/mine/:id', controllerItems.itemByOwner);
 router.put('/items/:id', controllerItems.editItem); // in use
 router.delete('/items/:id', controllerItems.deleteItem); // in use

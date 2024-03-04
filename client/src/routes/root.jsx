@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
-import { login } from "../services/userService";
+import { createUser, login } from "../services/userService";
 import { useMainContext } from '../components/Context';
 import './root.css';
 import mainLogo from '../assets/logo-crop.jpg';
@@ -9,24 +9,19 @@ import { FaRightFromBracket, FaParachuteBox, FaMapLocationDot, FaPaperPlane } fr
 
 
 const initialState = {
-  _id: "",
+  name: "",
   email: "",
-  password: "",
-  location: {},
-  image: {},
-  preferences: [],
+  password: ""
 }
 
 function Root() {
+  const [showSignup, setShowSignup] = useState(false);
   const { user, setUser } = useMainContext();
 
   const navigate = useNavigate();
 
-  // Login form
-  const [formValues, setFormValues] = useState({
-    email: "",
-    password: ""
-  });
+  // Form state
+  const [formValues, setFormValues] = useState(initialState);
 
   // changes in the login form
   function changeHandler (e) {
@@ -48,6 +43,20 @@ function Root() {
     }
     logInAndSet(formValues);
   };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    async function signupAndSet (formValues) {
+      const { name, email, password } = formValues;
+      const user = { name, email, password };
+      const newUser = await createUser(user);
+      setFormValues(initialState);
+      setUser(newUser);
+      navigate('/items');
+    }
+    signupAndSet(formValues);
+  };
+
 
   // logout button redirects back to start
   const handleLogout = async () => {
@@ -101,13 +110,24 @@ function Root() {
           <h1 className='logo-name' >Foosha</h1>
         </div>
 
-        <form id="login-form" onSubmit={handleLogin} >
+        {
+          showSignup ? (
+            <form id="signup-form" onSubmit={handleSignup} >
+          <input name="name" type="text" value={formValues.name} onChange={changeHandler} placeholder="user name" required={true} ></input>
           <input name="email" type="text" value={formValues.email} onChange={changeHandler} placeholder="email" required={true} ></input>
-
           <input name="password" type="password" value={formValues.password} onChange={changeHandler} placeholder="password" required={true} ></input>
-
+          <button className="signup-button button-turqouise" type="submit"  >sign up</button>
+        </form>
+          ) : (
+            <form id="login-form" onSubmit={handleLogin} >
+          <input name="email" type="text" value={formValues.email} onChange={changeHandler} placeholder="email" required={true} ></input>
+          <input name="password" type="password" value={formValues.password} onChange={changeHandler} placeholder="password" required={true} ></input>
           <button className="login-button button-turqouise" type="submit"  >login</button>
         </form>
+          )
+        }
+
+        <button className="toggle-signup-button button-turqouise" type="submit" onClick={() => setShowSignup(!showSignup)} >{showSignup ? 'cancel sign up' : '...or sign up'}</button>
       </>
     )}
     </>

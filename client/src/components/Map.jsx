@@ -4,7 +4,6 @@ import { useMainContext } from './Context';
 import { defaultLocation } from '../services/mapApiService';
 
 const mapsApiKey = import.meta.env.VITE_MAPS_API_KEY;
-console.log(mapsApiKey, typeof mapsApiKey);
 
 const containerStyle = {
   width: '100%',

@@ -1,9 +1,4 @@
 const ItemModel = require('../models/items');
-// const cloudinary = require('cloudinary').v2;
-
-
-// const cloudinaryConfig = import.meta.env.VITE_CLOUDINARY_CONFIG;
-// cloudinary.config(cloudinaryConfig);
 
 
 // posting new item to database

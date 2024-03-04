@@ -44,7 +44,6 @@ function AddForm ({setShowAddForm}) {
 async function submitHandler(e) {
   e.preventDefault();
   let imageUrl = '';
-
   if (imageFile) {
     try {
       const formData = new FormData();

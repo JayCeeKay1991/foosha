@@ -7,6 +7,8 @@ import { deleteItem } from '../services/itemService';
 import { editItem } from '../services/itemService';
 import { useMainContext } from './Context';
 import { postImageToCloudinary } from '../services/itemService';
+import Map from './Map';
+import { formatLocation } from '../services/mapApiService';
 
 
 
@@ -18,7 +20,11 @@ function MyItem ({item}) {
   const initialState = {
     title: item.title || '',
     description: item.description || '',
-    location: item.location || {},
+    location: {
+      lat: 0,
+      lng: 0,
+    },
+    locationName: item.locationName || '',
     image: item.image || ''
   }
 
@@ -38,6 +44,11 @@ function MyItem ({item}) {
     }
   }
 
+  // choosing a location by clicking on the map
+  function handleLocationSelect (location) {
+    setFormValues((prev) => ({ ...prev, location }));
+  };
+
   // edit form submit
   async function submitHandler (e) {
     e.preventDefault();
@@ -53,9 +64,11 @@ function MyItem ({item}) {
       }
     }
 
+    const locationName = await formatLocation(formValues.location.lat, formValues.location.lng);
     const newItemData = {
       ...formValues,
       image: imageUrl,
+      locationName
     };
 
     try {
@@ -132,6 +145,8 @@ function MyItem ({item}) {
         <input name="title" type="text" value={formValues.title} onChange={changeHandler} placeholder="user name" required={true} ></input>
         <label>description</label>
         <input name="description" type="text" value={formValues.description} onChange={changeHandler} placeholder="description" required={true} ></input>
+        <label>location</label>
+        <Map mapAsInput={true} onLocationSelect={handleLocationSelect} zoom={13}></Map>
         <label>image</label>
         <input id="upload-button-item-image" name="image" type="file" onChange={changeHandler} ></input>
         <button type="submit" className="button-turqouise save-edit-button" >save changes</button>

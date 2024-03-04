@@ -29,7 +29,6 @@ function ItemList () {
         <Map mapAsInput={false} items={list} zoom={10}></Map>
       </div>
 
-
       <div id="item-list-container" >
         {/* we don't show our own items here */}
         {

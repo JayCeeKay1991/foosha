@@ -20,7 +20,6 @@ export function fetchUserLocation(setLocation) {
     );
   } else {
     console.log("Geolocation is not supported by this browser.");
-    // if geolocation is not supported ...
     setLocation(defaultLocation);
   }
 }

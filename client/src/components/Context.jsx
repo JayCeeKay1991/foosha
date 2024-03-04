@@ -21,6 +21,8 @@ export default function ContextProvider({ children }) {
   useEffect(() => {
     async function fetchAndSet () {
       fetchUserLocation(setLocation);
+      console.log('🦋', location)
+
       const itemData = await getAllItems();
       const convoData = await getAllConversations();
       const messageData = await getAllMessages();

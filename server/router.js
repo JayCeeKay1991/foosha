@@ -19,7 +19,6 @@ router.delete('/items/:id', controllerItems.deleteItem); // in use
 
 router.post('/messages', controllerMessages.postMessage); // in use
 router.get('/messages', controllerMessages.allMessages); // in use
-router.get('/messages/:thread', controllerMessages.messagesByThread);
 
 router.post('/conversations', controllerConversations.postConversation); // in use
 router.get('/conversations', controllerConversations.allConversations); // in use

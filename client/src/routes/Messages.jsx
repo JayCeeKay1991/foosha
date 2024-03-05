@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import Conversation from "../components/Conversation";
 import { useMainContext } from '../components/Context';
 import './Messages.css';
-import { getMessageByThread } from "../services/messageService";
+
 
 function Messages () {
   const {user, conversationList} = useMainContext();

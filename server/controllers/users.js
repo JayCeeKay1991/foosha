@@ -51,8 +51,8 @@ exports.userById = async (req, res) => {
     return res.body;
   } catch (error) {
     console.error(error);
-    res.send(error);
     res.status(500);
+    res.send({ message: "An unexpected error occurred while getting the user. Please try again later." });
   }
 }
 
@@ -78,6 +78,6 @@ exports.editUser = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while editing the user. Please try again later." });
   }
 }

@@ -11,7 +11,7 @@ exports.postMessage = async (req, res) => {
   } catch (error) {
     console.error();
     res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while posting the message. Please try again later." });
   }
 }
 
@@ -25,22 +25,7 @@ exports.allMessages = async (req, res) => {
   } catch (error) {
     console.error();
     res.status(500);
-    res.send(error);
-  }
-}
-
-// getting messages by item
-exports.messagesByThread = async (req, res) => {
-  try {
-    const id = req.params.thread;
-    const messages = await MessageModel.find({thread: id});
-    res.send(messages);
-    res.status(200);
-    return res.body;
-  } catch (error) {
-    console.error();
-    res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while getting the messages. Please try again later." });
   }
 }
 

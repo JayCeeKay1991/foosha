@@ -11,7 +11,7 @@ exports.postConversation = async (req, res) => {
   } catch (error) {
     console.error();
     res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while creating the conversation. Please try again later." });
   }
 }
 
@@ -25,7 +25,7 @@ exports.allConversations = async (req, res) => {
   } catch (error) {
     console.error();
     res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while getting the conversations. Please try again later." });
   }
 }
 
@@ -39,7 +39,7 @@ exports.getConversationByItemId = async (req, res) => {
     res.send(conversation);
   } catch (error) {
     res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while getting the conversation. Please try again later." });
   }
 }
 

@@ -25,8 +25,8 @@ exports.postItem = async (req, res) => {
   }
   catch (error) {
     console.error(error);
-    res.send(error);
     res.status(500);
+    res.send({ message: "An unexpected error occurred while posting the item. Please try again later." });
   }
 }
 
@@ -39,8 +39,8 @@ exports.allItems = async (req, res) => {
     return res.body;
   } catch (error) {
     console.error(error);
-    res.send(error);
     res.status(500);
+    res.send({ message: "An unexpected error occurred while getting the items. Please try again later." });
   }
 }
 
@@ -54,8 +54,8 @@ exports.itemById = async (req, res) => {
     return res.body;
   } catch (error) {
     console.error(error);
-    res.send(error);
     res.status(500);
+    res.send({ message: "An unexpected error occurred while getting the item. Please try again later." });
   }
 }
 
@@ -82,7 +82,7 @@ exports.editItem = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while editing the item. Please try again later." });
   }
 }
 
@@ -96,6 +96,6 @@ exports.deleteItem = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500);
-    res.send(error);
+    res.send({ message: "An unexpected error occurred while deleting the item. Please try again later." });
   }
 }

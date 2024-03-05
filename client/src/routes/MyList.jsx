@@ -40,16 +40,13 @@ function MyList () {
     <>
       <h2>My List</h2>
       <button id="filter-button" onClick={toggleList} >{showSavedItems ? 'show open' : 'show saved'}</button>
-      <div id="item-list-wrapper" >
-
-      <div id="item-list-container" >
+      <div id="my-list-container" >
         {
           (!myList.length) ? (<p>No open items for now 🥦🥦🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} ></MyItem>))
         }
-      </div>
-        </div>
       <button id='add-button' className='button-turqouise' onClick={() => setShowAddForm(!showAddForm)}>{showAddForm ? 'cancel' : 'add'}</button>
       {showAddForm ? <AddForm setShowAddForm={setShowAddForm} ></AddForm> : null}
+      </div>
     </>
   )
 

@@ -1,3 +1,5 @@
 #messages-thread-container {
   color: var(--text-grey-dark);
+  overflow: scroll;
+  height: 680px;
 }

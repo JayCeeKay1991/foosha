@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './MyItem.css';
 import './Item.css';
 import { FaLocationDot, FaPencil, FaTrashCan, FaCircleCheck } from 'react-icons/fa6';
@@ -16,6 +16,14 @@ function MyItem ({item}) {
   const { setList } = useMainContext();
   const [showEdit, setShowEdit] = useState(false);
   const [imageFile, setImageFile] = useState(null);
+  const itemRef = useRef(null);
+
+  useEffect(() => {
+    if (showEdit) {
+      itemRef.current.scrollIntoView({behaviour: 'smooth', block: 'nearest'})
+    }
+  }, [showEdit])
+
 
   const initialState = {
     title: item.title || '',
@@ -136,7 +144,8 @@ function MyItem ({item}) {
     </div>
     {
       showEdit ? (
-      <form id="edit-form" onSubmit={submitHandler} >
+        <div ref={itemRef} >
+      <form  id="edit-form" onSubmit={submitHandler} >
         <label>title</label>
         <input name="title" type="text" value={formValues.title} onChange={changeHandler} placeholder="user name" required={true} ></input>
         <label>description</label>
@@ -147,6 +156,7 @@ function MyItem ({item}) {
         <input id="upload-button-item-image" name="image" type="file" onChange={changeHandler} ></input>
         <button type="submit" className="button-turqouise save-edit-button" >save changes</button>
       </form>
+       </div>
       ) : null
     }
     </div>

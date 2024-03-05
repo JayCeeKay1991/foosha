@@ -9,14 +9,19 @@ h2 {
   color: var(--text-grey-dark);
   margin: 20px;
   overflow: auto;
-
   max-height: 360px;
+}
+
+#my-list-container {
+  color: var(--text-grey-dark);
+  margin: 20px;
+  overflow: scroll;
+  height: 680px;
 }
 
 #item-map {
   margin: 0 20px;
 }
-
 
 #add-button {
   margin: 20px;

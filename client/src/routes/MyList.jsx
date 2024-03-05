@@ -14,7 +14,7 @@ function MyList () {
 
   useEffect(() => {
     async function filterAndSet () {
-      const filteredList = list.filter(elem => elem.owner === user._id)
+      const filteredList = list.filter(elem => elem.owner === user._id && elem.available)
       setMyList(filteredList);
     }
     filterAndSet();

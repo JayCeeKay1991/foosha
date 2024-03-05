@@ -13,6 +13,7 @@ function ContactForm ({item, setShowContactForm}) {
     message: '',
     author: user._id,
     thread: '',
+    dateTime: Date.now()
   }
 
   const [formValues, setFormValues] = useState(initialState);
@@ -32,6 +33,7 @@ function ContactForm ({item, setShowContactForm}) {
       // Is there already a conversation for this item?
       const conversationInDb = await getConversationByItemId(item._id, user._id);
 
+      // if so:
       if (conversationInDb) {
         const newMessage = await postMessage({...formValues, thread: conversationInDb._id});
         // update message list

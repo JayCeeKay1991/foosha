@@ -91,8 +91,7 @@
 
 #your-turn-badge {
   position: absolute;
-  right: 60px;
-  top: 160px;
+  right: 20px;
   border: solid 1px var(--icon-color-grey);
   background-color: var(--theme-light);
   border-radius: 15px;

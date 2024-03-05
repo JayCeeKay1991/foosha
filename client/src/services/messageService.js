@@ -12,6 +12,18 @@ export async function getAllMessages () {
 }};
 
 
+export async function getMessageByThread (id) {
+  try   {
+    const response = await fetch(`${rootUrl}/${id}`, {
+    method: 'GET'
+  })
+  const data = await response.json();
+  return data;
+  } catch (error) {
+    console.log(error);
+}};
+
+
 export async function postMessage (body) {
   try {
     const response = await fetch(rootUrl, {

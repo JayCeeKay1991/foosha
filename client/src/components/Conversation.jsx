@@ -17,6 +17,7 @@ function Conversation ({item}) {
     message: "",
     author: user._id,
     thread: item._id,
+    dateTime: Date.now()
   }
 
   const [formValues, setFormValues] = useState(initialState);
@@ -42,12 +43,16 @@ function Conversation ({item}) {
     }
   };
 
-  // show the messages belonging to each conversation
+  // show the messages belonging to each conversation at init and whenever messages update
+  useEffect(() => {
+    const filteredMessages = messageList.filter(elem => elem.thread === item._id);
+    setMessagesByConversation(filteredMessages);
+  }, [])
+
   useEffect(() => {
     const filteredMessages = messageList.filter(elem => elem.thread === item._id);
     setMessagesByConversation(filteredMessages);
   }, [messageList])
-
 
   // show the contact info on the conversation
   useEffect(() => {
@@ -77,7 +82,7 @@ function Conversation ({item}) {
                 <p> {messagesByConversation.length} message{messagesByConversation.length > 1 ? 's' : ''} </p>
                 <p >last message: {formatDateTime(elem.dateTime)}</p>
                 {
-                  elem.author !== user._id && item.available ?  <p id="your-turn-badge" >{'your turn!'}</p> : ''
+                  elem.author != user._id ? <p id="your-turn-badge" >{'your turn!'}</p> : ''
                 }
               </div>
             : ''

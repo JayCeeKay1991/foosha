@@ -29,5 +29,19 @@ exports.allMessages = async (req, res) => {
   }
 }
 
+// getting messages by item
+exports.messagesByThread = async (req, res) => {
+  try {
+    const id = req.params.thread;
+    const messages = await MessageModel.find({thread: id});
+    res.send(messages);
+    res.status(200);
+    return res.body;
+  } catch (error) {
+    console.error();
+    res.status(500);
+    res.send(error);
+  }
+}
 
 

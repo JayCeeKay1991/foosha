@@ -7,7 +7,7 @@ const mapsApiKey = import.meta.env.VITE_MAPS_API_KEY;
 
 const containerStyle = {
   width: '100%',
-  height: '400px'
+  height: '300px'
 };
 
 const defaultCenter = defaultLocation;

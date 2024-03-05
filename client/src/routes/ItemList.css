@@ -4,9 +4,13 @@ h2 {
   padding: 0 20px;
 }
 
+
 #item-list-container {
   color: var(--text-grey-dark);
   margin: 20px;
+  overflow: auto;
+
+  max-height: 360px;
 }
 
 #item-map {

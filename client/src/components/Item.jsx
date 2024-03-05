@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Item.css';
 import { FaLocationDot } from 'react-icons/fa6';
 import { FaCommentDots } from 'react-icons/fa6';
@@ -8,6 +8,14 @@ import ContactForm from './ContactForm';
 function Item ({item}) {
 
   const [showContactForm, setShowContactForm] = useState(false);
+  const itemRef = useRef(null);
+
+  useEffect(() => {
+    if (showContactForm) {
+      itemRef.current.scrollIntoView({behaviour: 'smooth', block: 'nearest'})
+    }
+  }, [showContactForm])
+
 
   return (
     <>
@@ -30,7 +38,10 @@ function Item ({item}) {
             <p id="saved-stamp" >saved</p>
           )}
       </div>
-        {showContactForm ? <ContactForm  item={item} setShowContactForm={setShowContactForm} ></ContactForm> : null}
+      <div ref={itemRef} >
+
+        {showContactForm ? <ContactForm   item={item} setShowContactForm={setShowContactForm} ></ContactForm> : null}
+      </div>
     </>
   )
 }

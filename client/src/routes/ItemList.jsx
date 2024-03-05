@@ -34,7 +34,7 @@ function ItemList () {
         {
           (!list.filter(elem => elem.owner !== user._id).length) ? <p>Nothing on offer 🥦🥦🥦</p> : list.map(elem =>
             elem.owner !== user._id ? <Item key={elem._id} item={elem} ></Item> : null)
-        }
+          }
       </div>
     </>
   )

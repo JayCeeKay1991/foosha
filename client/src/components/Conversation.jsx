@@ -43,11 +43,7 @@ function Conversation ({item}) {
     }
   };
 
-  // show the messages belonging to each conversation at init and whenever messages update
-  useEffect(() => {
-    const filteredMessages = messageList.filter(elem => elem.thread === item._id);
-    setMessagesByConversation(filteredMessages);
-  }, [])
+  // show the messages belonging to each conversation
 
   useEffect(() => {
     const filteredMessages = messageList.filter(elem => elem.thread === item._id);

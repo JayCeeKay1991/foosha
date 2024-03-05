@@ -34,7 +34,7 @@ exports.getConversationByItemId = async (req, res) => {
   try {
     const id = req.params.id;
     const contact = req.params.contact;
-    const conversation = await ConversationModel.findOne({itemId: id, contact: contact});
+    const conversation = await ConversationModel.findOne({itemId: id, contact: contact}).populate('owner');
     res.status(200);
     res.send(conversation);
   } catch (error) {

@@ -1,7 +1,10 @@
+body {
+  margin:0
+}
 #root {
   text-align: center;
   font-family: abel;
-  min-height: 100vh;
+  height: 100vh;
   min-width: 100vw;
   --theme-dark: rgb(14, 48, 64);
   --theme-light: rgb(218, 227, 236);
@@ -98,9 +101,10 @@
   position: absolute;
   top: 100px;
   width: 100%;
+  height: 90vh;
   background-color: var(--theme-light);
-  min-height: 100vh;
   border-radius: 20px 20px 0 0;
+  overflow: hidden;
 }
 
 #bottom-menu {
@@ -171,4 +175,8 @@
   animation: fadeIn 0.8s ease-in-out forwards;
   animation-delay: 0.5s;
   opacity: 0;
+}
+
+#item-list {
+  overflow: hidden;
 }

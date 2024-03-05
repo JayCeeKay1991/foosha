@@ -3,7 +3,6 @@
   font-family: abel;
   min-height: 100vh;
   min-width: 100vw;
-  height: fit-content;
   --theme-dark: rgb(14, 48, 64);
   --theme-light: rgb(218, 227, 236);
   --theme-medium: rgb(197, 211, 223);

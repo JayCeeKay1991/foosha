@@ -23,3 +23,4 @@ To connect your own database, you might want to adapt `server/model/index.js` lo
 - Mark conversations when the corresponding food item is no longer available
 - Add badges to the food items regarding dietary preferences
 - Convert Javascript to Typescript
+- Adding testing

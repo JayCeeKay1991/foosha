@@ -1,4 +1,4 @@
-const rootUrl = 'http://localhost:3000/messages';
+const rootUrl = `${import.meta.env.VITE_SERVER || 'http://localhost:3000'}/messages`;
 
 export async function getAllMessages () {
   try   {

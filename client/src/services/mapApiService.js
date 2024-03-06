@@ -1,5 +1,6 @@
 const mapsApiKey = import.meta.env.VITE_MAPS_API_KEY;
 
+// Berlin as a fallback
 export const defaultLocation = {
   lat: 52.507389,
   lng: 13.378096
@@ -15,7 +16,7 @@ export function fetchUserLocation(setLocation) {
       (error) => {
         // if location can't be found
         console.error("Error getting location: ", error);
-        setLocation(defaultLocation); // Berlin as a fallback
+        setLocation(defaultLocation);
       }
     );
   } else {

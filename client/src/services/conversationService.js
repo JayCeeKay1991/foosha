@@ -1,4 +1,4 @@
-const rootUrl = 'http://localhost:3000/conversations';
+const rootUrl = `${import.meta.env.VITE_SERVER || 'http://localhost:3000'}/conversations`;
 
 
 export async function postConversation (body) {

@@ -1,4 +1,4 @@
-const rootUrl = 'http://localhost:3000/items';
+const rootUrl = `${import.meta.env.VITE_SERVER || 'http://localhost:3000'}/items`;
 const cloudinaryCloudname = import.meta.env.VITE_CLOUDINARY_CLOUDNAME;
 const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudinaryCloudname}/image/upload`;
 

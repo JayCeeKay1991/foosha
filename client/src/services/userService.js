@@ -1,4 +1,4 @@
-const rootUrl = 'http://localhost:3000/user';
+const rootUrl = `${import.meta.env.VITE_SERVER || 'http://localhost:3000'}/user`;
 
 // create new user (signup)
 export async function createUser (body) {

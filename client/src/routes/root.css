@@ -114,6 +114,7 @@ body {
   background-color: var(--theme-light);
   border-radius: 20px 20px 0 0;
   overflow: hidden;
+  height: 100%;
 }
 
 #bottom-menu {
@@ -188,5 +189,6 @@ body {
 
 #item-list {
   width: 100%;
+  min-height: 100%;
   overflow: hidden;
 }

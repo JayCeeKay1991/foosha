@@ -74,7 +74,7 @@ function Conversation ({item}) {
             messagesByConversation.map(
               (elem, i) =>
               i === messagesByConversation.length - 1 ?
-              <div key={elem._id} >
+              <div id="last-message-info" key={elem._id} >
                 <p> {messagesByConversation.length} message{messagesByConversation.length > 1 ? 's' : ''} </p>
                 <p >last message: {formatDateTime(elem.dateTime)}</p>
                 {

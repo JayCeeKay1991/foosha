@@ -37,7 +37,7 @@ function Root() {
 
       const user = { email, password };
       const loggedInUser = await login(user);
-      setFormValues({email: "", password: ""});
+      setFormValues(initialState);
       setUser(loggedInUser);
       navigate('/items');
     }

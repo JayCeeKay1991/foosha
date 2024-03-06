@@ -42,7 +42,7 @@ function MyList () {
       <button id="filter-button" onClick={toggleList} >{showSavedItems ? 'show open' : 'show saved'}</button>
       <div id="my-list-container" >
         {
-          (!myList.length) ? (<p>No open items for now 🥦🥦🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} ></MyItem>))
+          (!myList.length) ? (<p>Nothing in your list 🥦🥦🥦</p>) : (myList.map(elem => <MyItem key={elem._id} item={elem} ></MyItem>))
         }
       <button id='add-button' className='button-turqouise' onClick={() => setShowAddForm(!showAddForm)}>{showAddForm ? 'cancel' : 'add'}</button>
       {showAddForm ? <AddForm setShowAddForm={setShowAddForm} ></AddForm> : null}

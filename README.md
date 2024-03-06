@@ -1,5 +1,6 @@
-Foosha is a project which was created within one week at Codeworks software engineering immersive bootcamp. 
-It is a foodsharing app designed for mobile use. 
+Foosha is a foodsharing app designed for mobile use. 
+
+It is a project which was created within one week at Codeworks software engineering immersive bootcamp, and it will be developed further by collaborators wihthin this course.
 
 ## Collaborate
 

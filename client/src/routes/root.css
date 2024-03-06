@@ -1,11 +1,7 @@
-body {
-  margin:0
-}
+
 #root {
   text-align: center;
   font-family: abel;
-  height: 100vh;
-  min-width: 100vw;
   --theme-dark: rgb(14, 48, 64);
   --theme-light: rgb(218, 227, 236);
   --theme-medium: rgb(197, 211, 223);
@@ -15,9 +11,23 @@ body {
   --text-grey-light: rgb(227, 227, 227);
   --text-grey-dark: rgb(112, 112, 112);
   --icon-color-grey: rgb(110, 113, 120);
+  --iphone-14-max-width: 430px;
+  --iphone-14-max-height: 932px;
+  width: var(--iphone-14-max-width);
+  height: var(--iphone-14-max-height);
   background-color: var(--theme-dark);
 }
 
+body {
+  margin:0;
+  width: var(--iphone-14-max-width);
+  height: var(--iphone-14-max-height);
+  overflow: hidden;
+}
+
+#app-container {
+  width: var(--iphone-14-max-width);
+}
 
 @font-face {
   font-family: 'leckerli';
@@ -100,8 +110,7 @@ body {
 #app-background {
   position: absolute;
   top: 100px;
-  width: 100%;
-  height: 90vh;
+  width: var(--iphone-14-max-width);
   background-color: var(--theme-light);
   border-radius: 20px 20px 0 0;
   overflow: hidden;
@@ -111,7 +120,7 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: var(--iphone-14-max-width);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -178,5 +187,6 @@ body {
 }
 
 #item-list {
+  width: 100%;
   overflow: hidden;
 }

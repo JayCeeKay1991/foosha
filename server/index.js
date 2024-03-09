@@ -6,7 +6,7 @@ const cors = require('cors');
 
 
 app.use(cors({
-  origin: 'https://foosha.netlify.app/'
+  origin: '*'
 }));
 
 

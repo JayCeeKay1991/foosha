@@ -6,9 +6,10 @@ h2 {
 
 
 #item-list-container {
-  color: var(--text-grey-dark);
   margin: 20px;
+  color: var(--text-grey-dark);
   overflow: auto;
+  height: 320px;
 }
 
 #my-list-container {

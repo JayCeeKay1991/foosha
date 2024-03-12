@@ -35,6 +35,7 @@ function ContactForm ({item, setShowContactForm}) {
 
       // if so:
       if (conversationInDb) {
+        console.log(conversationInDb);
         const newMessage = await postMessage({...formValues, thread: conversationInDb._id});
         // update message list
         setMessageList(prevList => [...prevList, newMessage]);

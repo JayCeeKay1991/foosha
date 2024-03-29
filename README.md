@@ -1,6 +1,6 @@
 Foosha is a foodsharing app designed for mobile use. 
 
-It is a project which was created within one week at Codeworks software engineering immersive bootcamp, and it will be developed further by collaborators wihthin this course.
+It is a project which was created by me within one week at Codeworks software engineering, and it was developed further by collaborators.
 
 ### Login screen, main list and my list
 <img width="200" alt="Screenshot 2024-03-06 at 10 16 46" src="https://github.com/JayCeeKay1991/foosha/assets/70958275/bea1685c-a757-4114-b44a-e57091adb4b1">
@@ -25,3 +25,6 @@ To connect your own database, you might want to adapt `server/model/index.js` lo
 - Add badges to the food items regarding dietary preferences
 - Convert Javascript to Typescript
 - Adding testing
+
+
+Foosha is deployed at https://foosha.netlify.app/

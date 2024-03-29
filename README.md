@@ -15,9 +15,23 @@ It is a project which was created by me within one week at Codeworks software en
 
 To collaborate, fork this repo and clone it into a local repository. Run `npm install` from client and server separately.
 The client is started by running `npm run dev` from the client root folder. 
-To connect your own database, you might want to adapt `server/model/index.js` locally.
+The server is started by running `npm start` from the server root folder.
+To connect your own database, you might want to adapt a .env file locally with variables as defined in server/config.js.
 
-### Ideas for further development
+## Tech stack
+### Front end
+- React
+- CSS
+- Cloudinary
+- React-google-maps
+  
+### Back end & data
+- Node.js
+- Express
+- Mongo DB
+- Mongoose
+
+### Suggestions for further development
 
 - Sorting conversations by newest message and highlight unread messages
 - Mark conversations when the corresponding food item is no longer available
